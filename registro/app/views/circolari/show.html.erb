@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @circolare.numero %>
+</p>
+
+<p>
+  <strong>Dataemissione:</strong>
+  <%= @circolare.dataemissione %>
+</p>
+
+<p>
+  <strong>Titolo:</strong>
+  <%= @circolare.titolo %>
+</p>
+
+<p>
+  <strong>Oggetto:</strong>
+  <%= @circolare.oggetto %>
+</p>
+
+<%= link_to 'Edit', edit_circolare_path(@circolare) %> |
+<%= link_to 'Back', circolari_path %>

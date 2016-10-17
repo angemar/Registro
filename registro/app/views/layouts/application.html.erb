@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="alunno_menu">
+    <% if current_alunno %>
+     <%=link_to "Profilo",
+       :controller => "alunni",
+       :action => "show",
+       :id => current_alunno.id
+     %>
+     <%=link_to "Logout",
+       :controller => "sessionealunno",
+       :action => "destroy"
+     %>
+    <% else %>
+     <%= link_to "Login", loginalunno_path %>
+     <%= link_to "Registrati", registrazionealunno_path %>
+    <% end %>
+  </div>
+
+ 
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <%= content_tag :div, msg, :class => "flash_#{name}" %>
+  <% end %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
+
+

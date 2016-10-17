@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Compiti</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Oggetto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compiti.each do |compito| %>
+      <tr>
+        <td><%= compito.data %></td>
+        <td><%= compito.oggetto %></td>
+        <td><%= link_to 'Show', compito %></td>
+        <td><%= link_to 'Edit', edit_compito_path(compito) %></td>
+        <td><%= link_to 'Destroy', compito, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Compito', new_compito_path %>

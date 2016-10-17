@@ -1,0 +1,25 @@
+<%= form_for(@compito) do |f| %>
+  <% if @compito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compito.errors.count, "error") %> prohibited this compito from being saved:</h2>
+
+      <ul>
+      <% @compito.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :oggetto %><br>
+    <%= f.text_area :oggetto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

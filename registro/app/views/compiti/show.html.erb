@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @compito.data %>
+</p>
+
+<p>
+  <strong>Oggetto:</strong>
+  <%= @compito.oggetto %>
+</p>
+
+<%= link_to 'Edit', edit_compito_path(@compito) %> |
+<%= link_to 'Back', compiti_path %>

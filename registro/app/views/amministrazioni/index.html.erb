@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Amministrazioni</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cf</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Indirizzo</th>
+      <th>Cittaresidenza</th>
+      <th>Cittanascita</th>
+      <th>Datanascita</th>
+      <th>Email</th>
+      <th>Titolo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @amministrazioni.each do |amministrazione| %>
+      <tr>
+        <td><%= amministrazione.cf %></td>
+        <td><%= amministrazione.nome %></td>
+        <td><%= amministrazione.cognome %></td>
+        <td><%= amministrazione.indirizzo %></td>
+        <td><%= amministrazione.cittaresidenza %></td>
+        <td><%= amministrazione.cittanascita %></td>
+        <td><%= amministrazione.datanascita %></td>
+        <td><%= amministrazione.email %></td>
+        <td><%= amministrazione.titolo %></td>
+        <td><%= link_to 'Show', amministrazione %></td>
+        <td><%= link_to 'Edit', edit_amministrazione_path(amministrazione) %></td>
+        <td><%= link_to 'Destroy', amministrazione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Amministrazione', new_amministrazione_path %>

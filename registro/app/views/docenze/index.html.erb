@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Docenze</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cf</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Indirizzo</th>
+      <th>Cittaresidenza</th>
+      <th>Cittanascita</th>
+      <th>Datanascita</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @docenze.each do |docenza| %>
+      <tr>
+        <td><%= docenza.cf %></td>
+        <td><%= docenza.nome %></td>
+        <td><%= docenza.cognome %></td>
+        <td><%= docenza.indirizzo %></td>
+        <td><%= docenza.cittaresidenza %></td>
+        <td><%= docenza.cittanascita %></td>
+        <td><%= docenza.datanascita %></td>
+        <td><%= docenza.email %></td>
+        <td><%= link_to 'Show', docenza %></td>
+        <td><%= link_to 'Edit', edit_docenza_path(docenza) %></td>
+        <td><%= link_to 'Destroy', docenza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Docenza', new_docenza_path %>

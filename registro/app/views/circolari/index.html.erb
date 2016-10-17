@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Circolari</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Dataemissione</th>
+      <th>Titolo</th>
+      <th>Oggetto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @circolari.each do |circolare| %>
+      <tr>
+        <td><%= circolare.numero %></td>
+        <td><%= circolare.dataemissione %></td>
+        <td><%= circolare.titolo %></td>
+        <td><%= circolare.oggetto %></td>
+        <td><%= link_to 'Show', circolare %></td>
+        <td><%= link_to 'Edit', edit_circolare_path(circolare) %></td>
+        <td><%= link_to 'Destroy', circolare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Circolare', new_circolare_path %>

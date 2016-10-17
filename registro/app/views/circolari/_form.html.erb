@@ -1,0 +1,33 @@
+<%= form_for(@circolare) do |f| %>
+  <% if @circolare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@circolare.errors.count, "error") %> prohibited this circolare from being saved:</h2>
+
+      <ul>
+      <% @circolare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero %><br>
+    <%= f.number_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :dataemissione %><br>
+    <%= f.date_select :dataemissione %>
+  </div>
+  <div class="field">
+    <%= f.label :titolo %><br>
+    <%= f.text_field :titolo %>
+  </div>
+  <div class="field">
+    <%= f.label :oggetto %><br>
+    <%= f.text_area :oggetto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descrizione: MyText
+  datainizio: 2016-10-16
+  datafine: 2016-10-16
+  luogo: MyString
+  orainizio: 2016-10-16 01:47:23
+  orafine: 2016-10-16 01:47:23
+
+two:
+  descrizione: MyText
+  datainizio: 2016-10-16
+  datafine: 2016-10-16
+  luogo: MyString
+  orainizio: 2016-10-16 01:47:23
+  orafine: 2016-10-16 01:47:23

@@ -1,0 +1,71 @@
+<%= form_for(@amministrazione) do |f| %>
+  <% if @amministrazione.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@amministrazione.errors.count, "error") %> prohibited this amministrazione from being saved:</h2>
+
+      <ul>
+      <% @amministrazione.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1>Dati registrazione</h1>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :email_confirmation %><br>
+    <%= f.text_field :email_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <h1>Dati profilo</h1>
+
+  <div class="field">
+    <%= f.label :cf %><br>
+    <%= f.text_field :cf %>
+  </div>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :cognome %><br>
+    <%= f.text_field :cognome %>
+  </div>
+  <div class="field">
+    <%= f.label :indirizzo %><br>
+    <%= f.text_field :indirizzo %>
+  </div>
+  <div class="field">
+    <%= f.label :cittaresidenza %><br>
+    <%= f.text_field :cittaresidenza %>
+  </div>
+  <div class="field">
+    <%= f.label :cittanascita %><br>
+    <%= f.text_field :cittanascita %>
+  </div>
+  <div class="field">
+    <%= f.label :datanascita %><br>
+    <%= f.date_select :datanascita %>
+  </div>
+  <div class="field">
+    <%= f.label :titolo %><br>
+    <%= f.text_field :titolo %>
+  </div>
+  <br><br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

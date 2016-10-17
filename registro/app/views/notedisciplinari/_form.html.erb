@@ -1,0 +1,25 @@
+<%= form_for(@notadisciplinare) do |f| %>
+  <% if @notadisciplinare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notadisciplinare.errors.count, "error") %> prohibited this notadisciplinare from being saved:</h2>
+
+      <ul>
+      <% @notadisciplinare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :oggetto %><br>
+    <%= f.text_area :oggetto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

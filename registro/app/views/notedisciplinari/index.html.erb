@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Notedisciplinari</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Oggetto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notedisciplinari.each do |notadisciplinare| %>
+      <tr>
+        <td><%= notadisciplinare.data %></td>
+        <td><%= notadisciplinare.oggetto %></td>
+        <td><%= link_to 'Show', notadisciplinare %></td>
+        <td><%= link_to 'Edit', edit_notadisciplinare_path(notadisciplinare) %></td>
+        <td><%= link_to 'Destroy', notadisciplinare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Notadisciplinare', new_notadisciplinare_path %>

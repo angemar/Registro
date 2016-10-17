@@ -1,0 +1,2 @@
+module AssenzeHelper
+end

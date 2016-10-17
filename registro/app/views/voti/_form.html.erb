@@ -1,0 +1,25 @@
+<%= form_for(@voto) do |f| %>
+  <% if @voto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@voto.errors.count, "error") %> prohibited this voto from being saved:</h2>
+
+      <ul>
+      <% @voto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :valore %><br>
+    <%= f.number_field :valore %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

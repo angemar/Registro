@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Voti</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Valore</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @voti.each do |voto| %>
+      <tr>
+        <td><%= voto.data %></td>
+        <td><%= voto.valore %></td>
+        <td><%= link_to 'Show', voto %></td>
+        <td><%= link_to 'Edit', edit_voto_path(voto) %></td>
+        <td><%= link_to 'Destroy', voto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Voto', new_voto_path %>
