@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016155847) do
+ActiveRecord::Schema.define(version: 20161017161742) do
 
   create_table "alunno", force: :cascade do |t|
     t.string   "cf"
@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 20161016155847) do
 
   add_index "alunno_compito", ["alunno_id"], name: "index_alunno_compito_on_alunno_id"
   add_index "alunno_compito", ["compito_id"], name: "index_alunno_compito_on_compito_id"
-
-  create_table "alunno_notadisciplinare", id: false, force: :cascade do |t|
-    t.integer "alunno_id"
-    t.integer "notadisciplinare_id"
-  end
-
-  add_index "alunno_notadisciplinare", ["alunno_id"], name: "index_alunno_notadisciplinare_on_alunno_id"
-  add_index "alunno_notadisciplinare", ["notadisciplinare_id"], name: "index_alunno_notadisciplinare_on_notadisciplinare_id"
 
   create_table "amministrazione", force: :cascade do |t|
     t.string   "cf"
@@ -136,6 +128,7 @@ ActiveRecord::Schema.define(version: 20161016155847) do
     t.datetime "updated_at",     null: false
     t.string   "password_salt"
     t.string   "password_hash"
+    t.text     "curriculum"
   end
 
   create_table "docenza_attivitaextra", id: false, force: :cascade do |t|
@@ -187,8 +180,10 @@ ActiveRecord::Schema.define(version: 20161016155847) do
     t.integer  "docenza_id"
     t.integer  "materia_id"
     t.integer  "sezione_id"
+    t.integer  "alunno_id"
   end
 
+  add_index "voto", ["alunno_id"], name: "index_voto_on_alunno_id"
   add_index "voto", ["docenza_id"], name: "index_voto_on_docenza_id"
   add_index "voto", ["materia_id"], name: "index_voto_on_materia_id"
   add_index "voto", ["sezione_id"], name: "index_voto_on_sezione_id"

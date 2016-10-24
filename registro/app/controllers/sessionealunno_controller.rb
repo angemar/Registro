@@ -6,7 +6,7 @@ class SessionealunnoController < ApplicationController
     alunno = Alunno.authenticate(params[:email], params[:password])
     if alunno
       session[:alunno_id]=alunno.id
-      redirect_to root_url, :notice => "#{alunno.email} login avvenuto con successo"
+      redirect_to menualunno_url, :notice => "#{alunno.email} login avvenuto con successo"
     else 
       flash[:notice] = "Email o password errati"
       redirect_to loginalunno_url

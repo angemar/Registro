@@ -50,5 +50,10 @@
   <%= @amministrazione.titolo %>
 </p>
 
-<%= link_to 'Edit', edit_amministrazione_path(@amministrazione) %> |
-<%= link_to 'Back', amministrazioni_path %>
+
+<% if amministrazionelogged_in? %>
+  <%= link_to 'Edit', edit_amministrazione_path(@amministrazione) %> |
+  <%= link_to 'Logout', logoutamministrazione_path %>
+<% else %>
+  <%= link_to 'Login', loginamministrazione_path %>
+<% end %>

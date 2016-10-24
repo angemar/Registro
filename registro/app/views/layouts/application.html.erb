@@ -8,21 +8,8 @@
 </head>
 <body>
 
-  <div id="alunno_menu">
-    <% if current_alunno %>
-     <%=link_to "Profilo",
-       :controller => "alunni",
-       :action => "show",
-       :id => current_alunno.id
-     %>
-     <%=link_to "Logout",
-       :controller => "sessionealunno",
-       :action => "destroy"
-     %>
-    <% else %>
-     <%= link_to "Login", loginalunno_path %>
-     <%= link_to "Registrati", registrazionealunno_path %>
-    <% end %>
+  <div id="menu">
+     <%= link_to "Home", root_path %>
   </div>
 
  

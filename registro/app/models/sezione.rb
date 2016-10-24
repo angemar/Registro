@@ -5,6 +5,6 @@ class Sezione < ActiveRecord::Base
 
    has_many :alunni
    has_many :compiti
-   has_many :docenze, :through => 'docenza_sezione_materia'
-   has_many :materie, :through => 'docenza_sezione_materia'
+   has_many :docenze, :through => :docenza_sezione_materia
+   has_many :materie, :through => :docenza_sezione_materia
 end

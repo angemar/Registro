@@ -42,4 +42,5 @@ class ApplicationController < ActionController::Base
       redirect_to loginamministrazione_url, :notice => "Eseguire login!"
     end
   end
+
 end

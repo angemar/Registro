@@ -1,6 +1,9 @@
 class AmministrazioniController < ApplicationController
   before_action :set_amministrazione, only: [:show, :edit, :update, :destroy]
 
+  def menu
+  end
+
   # GET /amministrazioni
   # GET /amministrazioni.json
   def index
@@ -69,6 +72,6 @@ class AmministrazioniController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def amministrazione_params
-      params.require(:amministrazione).permit(:cf, :nome, :cognome, :indirizzo, :cittaresidenza, :cittanascita, :datanascita, :email, :password, :titolo)
+      params.require(:amministrazione).permit(:cf, :nome, :cognome, :indirizzo, :cittaresidenza, :cittanascita, :datanascita, :email, :password, :titolo, :password_confirmation)
     end
 end

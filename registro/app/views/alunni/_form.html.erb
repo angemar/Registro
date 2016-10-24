@@ -56,6 +56,14 @@
     <%= f.label :datanascita %><br>
     <%= f.date_select :datanascita %>
   </div>
+
+<% if amministrazionelogged_in? %>
+   <div class="field">
+     <%= f.label :sezione_id %><br>
+     <%= f.select :sezione_id, Sezione.all.collect { |p| [ "%d %s" % [p.numero, p.lettera] , p.id ] }, include_blank: true %>
+   </div>
+<% end %>
+
   <br><br>
   <div class="actions">
     <%= f.submit %>

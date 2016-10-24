@@ -1,6 +1,9 @@
 class DocenzeController < ApplicationController
   before_action :set_docenza, only: [:show, :edit, :update, :destroy]
 
+  def menu
+  end
+
   # GET /docenze
   # GET /docenze.json
   def index
@@ -69,6 +72,6 @@ class DocenzeController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def docenza_params
-      params.require(:docenza).permit(:cf, :nome, :cognome, :indirizzo, :cittaresidenza, :cittanascita, :datanascita, :email, :password)
+      params.require(:docenza).permit(:cf, :nome, :cognome, :indirizzo, :cittaresidenza, :cittanascita, :datanascita, :curriculum, :email, :password, :password_confirmation)
     end
 end

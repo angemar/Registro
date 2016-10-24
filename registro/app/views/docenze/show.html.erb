@@ -36,6 +36,11 @@
 </p>
 
 <p>
+  <strong>Curriculum:</strong>
+  <a href="<%= @docenza.curriculum %>">Link al curriculum</a>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= @docenza.email %>
 </p>
@@ -45,5 +50,10 @@
   <%= @docenza.password %>
 </p>
 
-<%= link_to 'Edit', edit_docenza_path(@docenza) %> |
-<%= link_to 'Back', docenze_path %>
+
+<% if docenzalogged_in? %>
+  <%= link_to 'Edit', edit_docenza_path(@docenza) %> |
+  <%= link_to 'Logout', logoutdocenza_path %>
+<% else %>
+  <%= link_to 'Login', logindocenza_path %>
+<% end %>

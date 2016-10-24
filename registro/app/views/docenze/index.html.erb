@@ -12,6 +12,7 @@
       <th>Cittaresidenza</th>
       <th>Cittanascita</th>
       <th>Datanascita</th>
+      <th>Curriculum</th>	
       <th>Email</th>
       <th colspan="3"></th>
     </tr>
@@ -27,6 +28,7 @@
         <td><%= docenza.cittaresidenza %></td>
         <td><%= docenza.cittanascita %></td>
         <td><%= docenza.datanascita %></td>
+        <td><a href="<%= docenza.curriculum %>">Link al curriculum</a></td>
         <td><%= docenza.email %></td>
         <td><%= link_to 'Show', docenza %></td>
         <td><%= link_to 'Edit', edit_docenza_path(docenza) %></td>

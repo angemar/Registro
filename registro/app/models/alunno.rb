@@ -16,11 +16,11 @@ class Alunno < ActiveRecord::Base
    validates_confirmation_of :password
 
    belongs_to :sezione
-   has_and_belongs_to_many :attivitaextras
+   has_many :attivitaextras, :through => :alunno_attivitaextra
    has_many :voti
    has_many :compiti, :through => :alunno_compito
    has_many :assenze
-   has_and_belongs_to_many :notedisciplinari
+   has_many :notedisciplinari
 
 
    def encrypt_password

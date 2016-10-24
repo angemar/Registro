@@ -24,8 +24,10 @@ class AddReference < ActiveRecord::Migration
     add_column :voto, :docenza_id, :integer
     add_column :voto, :materia_id, :integer
     add_column :voto, :sezione_id, :integer
+    add_column :voto, :alunno_id, :integer
     add_index "voto", ["sezione_id"], name: "index_voto_on_sezione_id"
     add_index "voto", ["materia_id"], name: "index_voto_on_materia_id"
     add_index "voto", ["docenza_id"], name: "index_voto_on_docenza_id"
+    add_index "voto", ["alunno_id"], name: "index_voto_on_alunno_id"
   end
 end

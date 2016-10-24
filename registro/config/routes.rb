@@ -1,20 +1,26 @@
 Rails.application.routes.draw do
-  root :to => 'alunni#index'
+  root :to => 'home#show'
   
+  #Alunno
   get "loginalunno" => "sessionealunno#new"
   get "registrazionealunno" => "alunni#new"
   post "sessionealunno/create"
-  get "sessionealunno/destroy"
+  get "logoutalunno" => "sessionealunno#destroy"
+  get "menualunno" => "alunni#menu"
 
+  #Docenza
   get "logindocenza" => "sessionedocenza#new"
   get "registrazionedocenza" => "docenze#new"
   post "sessionedocenza/create"
-  get "sessionedocenza/destroy"
+  get "logoutdocenza" => "sessionedocenza#destroy"
+  get "menudocenza" => "docenze#menu"
 
+  #Amministrazione
   get "loginamministrazione" => "sessioneamministrazione#new"
   get "registrazioneamministrazione" => "amministrazioni#new"
   post "sessioneamministrazione/create"
-  get "sessioneamministrazione/destroy"
+  get "logoutamministrazione" => "sessioneamministrazione#destroy"
+  get "menuamministrazione" => "amministrazioni#menu"
 
   resources :voti
 
