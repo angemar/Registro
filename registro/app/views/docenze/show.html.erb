@@ -51,7 +51,7 @@
 </p>
 
 
-<% if docenzalogged_in? %>
+<% if userlogged_in? %>
   <%= link_to 'Edit', edit_docenza_path(@docenza) %> |
   <%= link_to 'Logout', logoutdocenza_path %>
 <% else %>

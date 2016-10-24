@@ -153,7 +153,6 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    pg (0.17.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -262,7 +261,6 @@ DEPENDENCIES
   mini_magick (= 3.8.0)
   minitest-reporters (= 1.0.5)
   net-ssh
-  pg (= 0.17.1)
   rails (= 4.2.0)
   rails_12factor (= 0.0.2)
   sass-rails (= 5.0.0.beta1)

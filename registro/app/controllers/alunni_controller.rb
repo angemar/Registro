@@ -4,6 +4,10 @@ class AlunniController < ApplicationController
   def menu
   end
 
+  def elenco
+    id=params[:sezione_id]
+    @alunni=Alunno.where(sezione_id: id)
+  end
   # GET /alunni
   # GET /alunni.json
   def index
@@ -16,7 +20,7 @@ class AlunniController < ApplicationController
     @alunno=Alunno.find(params[:id])
     sez_id=@alunno.sezione_id
     if sez_id != nil
-      @sezione=Sezione.find(sez_id)
+      @sezione=Sezione.find(sez_id) 
     end
   end
 

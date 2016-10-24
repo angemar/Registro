@@ -13,6 +13,7 @@
 
   <h1>Dati registrazione</h1>
 
+<% if session[:role] == 'docenza' %>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
@@ -25,6 +26,7 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+<% end %>
 
   <h1>Dati profilo</h1>
 

@@ -5,6 +5,7 @@ class SessionealunnoController < ApplicationController
   def create
     alunno = Alunno.authenticate(params[:email], params[:password])
     if alunno
+      session[:role]='alunno'
       session[:alunno_id]=alunno.id
       redirect_to menualunno_url, :notice => "#{alunno.email} login avvenuto con successo"
     else 

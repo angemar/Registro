@@ -5,6 +5,7 @@ class SessionedocenzaController < ApplicationController
   def create
     docenza = Docenza.authenticate(params[:email], params[:password])
     if docenza
+      session[:role]='docenza'
       session[:docenza_id]=docenza.id
       redirect_to menudocenza_url, :notice => "#{docenza.email} login avvenuto con successo"
     else 

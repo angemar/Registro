@@ -51,7 +51,7 @@
 </p>
 
 
-<% if amministrazionelogged_in? %>
+<% if userlogged_in? %>
   <%= link_to 'Edit', edit_amministrazione_path(@amministrazione) %> |
   <%= link_to 'Logout', logoutamministrazione_path %>
 <% else %>

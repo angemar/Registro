@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<% if session[:role] == 'alunno' %>
   <h1>Dati registrazione</h1>
 
   <div class="field">
@@ -25,6 +26,7 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+<% end %>
 
   <h1>Dati profilo</h1>
 
@@ -57,7 +59,7 @@
     <%= f.date_select :datanascita %>
   </div>
 
-<% if amministrazionelogged_in? %>
+<% if session[:role]=='amministrazione' && userlogged_in? %>
    <div class="field">
      <%= f.label :sezione_id %><br>
      <%= f.select :sezione_id, Sezione.all.collect { |p| [ "%d %s" % [p.numero, p.lettera] , p.id ] }, include_blank: true %>

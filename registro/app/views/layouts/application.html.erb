@@ -9,7 +9,20 @@
 <body>
 
   <div id="menu">
-     <%= link_to "Home", root_path %>
+     <% if userlogged_in? %>
+        <% if session[:role] == 'amministrazione' %>
+          <%= link_to "Menu", menuamministrazione_path %>
+          <%= link_to 'Logout', logoutamministrazione_path %>
+        <% elsif session[:role] == 'docenza' %>
+          <%= link_to "Menu", menudocenza_path %>
+          <%= link_to 'Logout', logoutdocenza_path %>
+        <% else %>
+          <%= link_to "Menu", menualunno_path %>
+          <%= link_to 'Logout', logoutalunno_path %>
+        <% end %>
+     <% else %>
+       <%= link_to "Home", root_path %>
+     <% end %>
   </div>
 
  

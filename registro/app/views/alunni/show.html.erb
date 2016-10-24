@@ -56,7 +56,7 @@
 </p>
 
 
-<% if alunnologged_in? %>
+<% if userlogged_in? %>
   <%= link_to 'Edit', edit_alunno_path(@alunno) %> |
   <%= link_to 'Logout', logoutalunno_path %>
 <% else %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "sessionealunno/create"
   get "logoutalunno" => "sessionealunno#destroy"
   get "menualunno" => "alunni#menu"
+  get "elenco" => 'alunni#elenco'
 
   #Docenza
   get "logindocenza" => "sessionedocenza#new"
