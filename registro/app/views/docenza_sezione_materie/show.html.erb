@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Docenza:</strong>
+  <%= @docenza_sezione_materia.docenza_id %>
+</p>
+
+<p>
+  <strong>Sezione:</strong>
+  <%= @docenza_sezione_materia.sezione_id %>
+</p>
+
+<p>
+  <strong>Materia:</strong>
+  <%= @docenza_sezione_materia.materia_id %>
+</p>
+
+<%= link_to 'Edit', edit_docenza_sezione_materia_path(@docenza_sezione_materia) %> |
+<%= link_to 'Back', docenza_sezione_materie_path %>

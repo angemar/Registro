@@ -1,0 +1,30 @@
+<%= form_for(@docenza_sezione_materia) do |f| %>
+  <% if @docenza_sezione_materia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@docenza_sezione_materia.errors.count, "error") %> prohibited this sezione from being saved:</h2>
+
+      <ul>
+      <% @docenza_sezione_materia.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :materia_id %><br>
+    <%= f.select :materia_id, Materia.all.collect { |p| [ "%s" % [p.nome] , p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.label :docenza_id %><br>
+    <%= f.select :docenza_id, Docenza.all.collect { |p| [ "%s %s" % [p.cognome, p.nome] , p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :sezione_id, :value => @sezione.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

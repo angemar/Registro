@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017161742) do
+ActiveRecord::Schema.define(version: 20161027140111) do
 
   create_table "alunno", force: :cascade do |t|
     t.string   "cf"
@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 20161017161742) do
     t.date     "datanascita"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "sezione_id"
     t.string   "password_salt"
     t.string   "password_hash"
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_token"
   end
 
   add_index "alunno", ["sezione_id"], name: "index_alunno_on_sezione_id"
@@ -60,10 +62,12 @@ ActiveRecord::Schema.define(version: 20161017161742) do
     t.string   "email"
     t.string   "password"
     t.string   "titolo"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_salt"
     t.string   "password_hash"
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_token"
   end
 
   create_table "assenza", force: :cascade do |t|
@@ -124,11 +128,13 @@ ActiveRecord::Schema.define(version: 20161017161742) do
     t.date     "datanascita"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_salt"
     t.string   "password_hash"
     t.text     "curriculum"
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_token"
   end
 
   create_table "docenza_attivitaextra", id: false, force: :cascade do |t|
@@ -139,10 +145,12 @@ ActiveRecord::Schema.define(version: 20161017161742) do
   add_index "docenza_attivitaextra", ["attivitaextra_id"], name: "index_docenza_attivitaextra_on_attivitaextra_id"
   add_index "docenza_attivitaextra", ["docenza_id"], name: "index_docenza_attivitaextra_on_docenza_id"
 
-  create_table "docenza_sezione_materia", id: false, force: :cascade do |t|
-    t.integer "docenza_id"
-    t.integer "sezione_id"
-    t.integer "materia_id"
+  create_table "docenza_sezione_materia", force: :cascade do |t|
+    t.integer  "sezione_id"
+    t.integer  "docenza_id"
+    t.integer  "materia_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "docenza_sezione_materia", ["docenza_id"], name: "index_docenza_sezione_materia_on_docenza_id"

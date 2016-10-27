@@ -10,10 +10,17 @@
   <%= @sezione.numero %>
 </p>
 
+<%= link_to 'Edit', edit_sezione_path(@sezione) %> |
+<%= link_to 'Back', sezioni_path %>
+
 <p>
   <strong>Elenco alunni:</strong>
   <%= link_to 'Visualizza elenco alunni', elenco_path(:sezione_id => @sezione.id) %>
 </p>
 
-<%= link_to 'Edit', edit_sezione_path(@sezione) %> |
-<%= link_to 'Back', sezioni_path %>
+<% if session[:role]=='amministrazione' && userlogged_in? %>
+	<p>
+		<strong>Assegnazione docenti e materie:</strong>
+		<%= link_to 'Assegna docenti e materie per la sezione', docenti_materie_path(:sezione_id => @sezione.id) %>
+	</p>
+<% end %>

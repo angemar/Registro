@@ -1,6 +1,19 @@
 class DocenzeController < ApplicationController
   before_action :set_docenza, only: [:show, :edit, :update, :destroy]
 
+  def confirm_email
+    docenza = Docenza.find_by_confirm_token(params[:id])
+    if docenza
+      docenza.email_activate
+      flash[:success] = "Welcome! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to logindocenza_url
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
+    end
+  end
+
   def menu
   end
 
@@ -31,6 +44,7 @@ class DocenzeController < ApplicationController
 
     respond_to do |format|
       if @docenza.save
+        DocenzaMailer.registration_confirmation(@docenza).deliver_now
         format.html { redirect_to @docenza, notice: 'Docenza was successfully created.' }
         format.json { render :show, status: :created, location: @docenza }
       else

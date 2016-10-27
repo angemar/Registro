@@ -1,0 +1,5 @@
+Hi <%= @amministrazione.nome %> <%= @amministrazione.cognome %>,
+
+Thanks for registering! To confirm your registration click the URL below.
+
+<%= confirm_email_amministrazione_url(@amministrazione.confirm_token) %>

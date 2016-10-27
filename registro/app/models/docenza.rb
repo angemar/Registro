@@ -2,6 +2,7 @@ class Docenza < ActiveRecord::Base
 
    attr_accessor :password
    before_save :encrypt_password
+   before_create :confirmation_token
 
    validates :cf, presence: true, length: { maximum: 16, minimum: 16 }
    validates :nome, presence: true
@@ -14,12 +15,13 @@ class Docenza < ActiveRecord::Base
    validates :password, presence: true
    validates_confirmation_of :password
 
-   has_many :attivitaextras, :through => :docenza_attivitaextra
+   has_many :docenza_attivitaextra
+   has_and_belongs_to_many :attivitaextras, :join_table => "docenza_attivitaextra"
    has_many :notedisciplinari
    has_many :compiti
-   has_many :materie, :through => :docenza_sezione_materia
-   has_many :sezioni, :through => :docenza_sezione_materia
    has_many :voti
+   has_and_belongs_to_many :sezioni, :join_table => "docenza_sezione_materia"
+   has_and_belongs_to_many :materie, :join_table => "docenza_sezione_materia"
 
 
    def encrypt_password
@@ -37,5 +39,20 @@ class Docenza < ActiveRecord::Base
       nil
     end
   end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
+  private
+  def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
+  end
+
+
 
 end

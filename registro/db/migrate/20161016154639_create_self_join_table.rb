@@ -15,15 +15,6 @@ class CreateSelfJoinTable < ActiveRecord::Migration
  
     add_index :docenza_attivitaextra, :docenza_id
     add_index :docenza_attivitaextra, :attivitaextra_id
-
-    create_table :docenza_sezione_materia, id: false do |t|
-      t.integer :docenza_id
-      t.integer :sezione_id
-      t.integer :materia_id
-    end
  
-    add_index :docenza_sezione_materia, :docenza_id
-    add_index :docenza_sezione_materia, :sezione_id
-    add_index :docenza_sezione_materia, :materia_id
   end
 end

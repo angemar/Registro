@@ -4,12 +4,12 @@ class SessionealunnoController < ApplicationController
  
   def create
     alunno = Alunno.authenticate(params[:email], params[:password])
-    if alunno
-      session[:role]='alunno'
-      session[:alunno_id]=alunno.id
-      redirect_to menualunno_url, :notice => "#{alunno.email} login avvenuto con successo"
+    if alunno && alunno.email_confirmed
+        session[:role]='alunno'
+        session[:alunno_id]=alunno.id
+        redirect_to menualunno_url, :notice => "#{alunno.email} login avvenuto con successo"
     else 
-      flash[:notice] = "Email o password errati"
+      flash[:notice] = "Email o password errati o email non confermato"
       redirect_to loginalunno_url
     end
   end

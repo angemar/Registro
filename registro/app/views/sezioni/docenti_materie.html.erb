@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Insegnamenti sezione <%= @sezione.numero %> <%= @sezione.lettera %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Materia</th>
+      <th colspan="2">Docente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materie.each do |materia| %>
+      <% @docenti.where(materie = materia.id).each do |docente| %>
+		    <tr>
+		      <td><%= materia.nome %></td>
+		      <td><%= docente.cognome %> <%= docente.nome %></td>
+		    </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Aggiungi insegnamento', nuovoinsegnamento_path(:sezione_id => @sezione.id) %>

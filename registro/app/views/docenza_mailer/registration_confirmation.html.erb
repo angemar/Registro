@@ -1,0 +1,5 @@
+Hi <%= @docenza.nome %> <%= @docenza.cognome %>,
+
+Thanks for registering! To confirm your registration click the URL below.
+
+<%= confirm_email_docenza_url(@docenza.confirm_token) %>

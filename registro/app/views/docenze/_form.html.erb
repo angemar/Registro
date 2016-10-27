@@ -13,7 +13,7 @@
 
   <h1>Dati registrazione</h1>
 
-<% if session[:role] == 'docenza' %>
+<% if session[:role] == 'docenza' || session[:role]==nil %>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>

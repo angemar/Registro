@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-<% if session[:role] == 'amministrazione' %>
+<% if session[:role] == 'amministrazione' || session[:role]==nil %>
   <h1>Dati registrazione</h1>
 
   <div class="field">

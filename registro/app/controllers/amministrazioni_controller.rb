@@ -1,6 +1,19 @@
 class AmministrazioniController < ApplicationController
   before_action :set_amministrazione, only: [:show, :edit, :update, :destroy]
 
+  def confirm_email
+    amministrazione = Amministrazione.find_by_confirm_token(params[:id])
+    if amministrazione
+      amministrazione.email_activate
+      flash[:success] = "Welcome! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to loginamministrazione_url
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
+    end
+  end
+
   def menu
   end
 
@@ -31,6 +44,7 @@ class AmministrazioniController < ApplicationController
 
     respond_to do |format|
       if @amministrazione.save
+        AmministrazioneMailer.registration_confirmation(@amministrazione).deliver_now
         format.html { redirect_to @amministrazione, notice: 'Amministrazione was successfully created.' }
         format.json { render :show, status: :created, location: @amministrazione }
       else

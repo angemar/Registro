@@ -1,0 +1,5 @@
+Hi <%= @alunno.nome %> <%= @alunno.cognome %>,
+
+Thanks for registering! To confirm your registration click the URL below.
+
+<%= confirm_email_alunno_url(@alunno.confirm_token) %>

@@ -2,6 +2,7 @@ class Amministrazione < ActiveRecord::Base
 
    attr_accessor :password
    before_save :encrypt_password
+   before_create :confirmation_token
 
    validates :cf, presence: true, length: { maximum: 16, minimum: 16 }
    validates :nome, presence: true
@@ -36,5 +37,20 @@ class Amministrazione < ActiveRecord::Base
       nil
     end
   end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
+  private
+  def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
+  end
+
+
 
 end

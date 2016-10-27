@@ -1,6 +1,19 @@
 class AlunniController < ApplicationController
   before_action :set_alunno, only: [:show, :edit, :update, :destroy]
 
+  def confirm_email
+    alunno = Alunno.find_by_confirm_token(params[:id])
+    if alunno
+      alunno.email_activate
+      flash[:success] = "Welcome! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to loginalunno_url
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
+    end
+  end
+
   def menu
   end
 
@@ -42,7 +55,8 @@ class AlunniController < ApplicationController
     @sezioni = Sezione.all
     respond_to do |format|
       if @alunno.save
-        format.html { redirect_to @alunno, notice: 'Alunno was successfully created.' }
+        AlunnoMailer.registration_confirmation(@alunno).deliver_now
+        format.html { redirect_to @alunno, notice: 'Alunno was successfully created. Confirm your email address to continue!' }
         format.json { render :show, status: :created, location: @alunno }
       else
         format.html { render :new }

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root :to => 'home#show'
   
   #Alunno
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
   get "logoutamministrazione" => "sessioneamministrazione#destroy"
   get "menuamministrazione" => "amministrazioni#menu"
 
+
+  get "docenti_materie" => 'sezioni#docenti_materie'
+  get "nuovoinsegnamento" => "docenza_sezione_materie#nuovoinsegnamento"
+
   resources :voti
 
   resources :sezioni
@@ -44,6 +49,27 @@ Rails.application.routes.draw do
   resources :amministrazioni
 
   resources :alunni
+
+  resources :docenza_sezione_materie
+
+  #Email confirmation
+  resources :alunni do
+    member do
+      get :confirm_email
+    end
+  end
+
+  resources :docenze do
+    member do
+      get :confirm_email
+    end
+  end
+
+  resources :amministrazioni do
+    member do
+      get :confirm_email
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
