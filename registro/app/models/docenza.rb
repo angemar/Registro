@@ -1,6 +1,7 @@
 class Docenza < ActiveRecord::Base
 
    attr_accessor :password
+   attr_accessor :user
    before_save :encrypt_password
    before_create :confirmation_token
 
@@ -11,18 +12,27 @@ class Docenza < ActiveRecord::Base
    validates :cittaresidenza, presence: true
    validates :datanascita, presence: true
    validates :cittanascita, presence: true
-   validates :email, presence: true, uniqueness: true, email: true
-   validates :password, presence: true
-   validates_confirmation_of :password
+   validates :email, presence: true, uniqueness: true, email: true, :on => :create
+   validates :password, presence: true, :on => :create
+   validates :password_confirmation, presence: true, :on => :create
+   validates_confirmation_of :password, :on => :create
+   
+   validates :email, presence: true, uniqueness: true, email: true, :on => :update, :if => :is_docenza
+   validates :password, presence: true, :on => :update, :if => :is_docenza
+   validates :password_confirmation, presence: true, :on => :update, :if => :is_docenza
+   validates_confirmation_of :password, :on => :update, :if => :is_docenza
 
-   has_many :docenza_attivitaextra
-   has_and_belongs_to_many :attivitaextras, :join_table => "docenza_attivitaextra"
+
+   has_many :attivitaextras
    has_many :notedisciplinari
    has_many :compiti
    has_many :voti
    has_and_belongs_to_many :sezioni, :join_table => "docenza_sezione_materia"
    has_and_belongs_to_many :materie, :join_table => "docenza_sezione_materia"
 
+   def is_docenza
+     user=="docenza"
+   end
 
    def encrypt_password
      if password.present?

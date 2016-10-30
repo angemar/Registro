@@ -1,5 +1,6 @@
 class CompitiController < ApplicationController
   before_action :set_compito, only: [:show, :edit, :update, :destroy]
+  before_filter :classe_assegnata, only: [:new]
 
   # GET /compiti
   # GET /compiti.json
@@ -61,6 +62,12 @@ class CompitiController < ApplicationController
     end
   end
 
+  def classe_assegnata
+    if DocenzaSezioneMateria.exists?(docenza_id: current_user.id) == false
+      redirect_to menudocenza_url, notice: 'Lei non ha nessuna classe assegnata!' 
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_compito
@@ -69,6 +76,6 @@ class CompitiController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compito_params
-      params.require(:compito).permit(:data, :oggetto)
+      params.require(:compito).permit(:data, :oggetto, :docenza_id, :materia_id, :sezione_id)
     end
 end

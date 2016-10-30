@@ -4,7 +4,7 @@ class SessioneamministrazioneController < ApplicationController
  
   def create
     amministrazione = Amministrazione.authenticate(params[:email], params[:password])
-    if amministrazione && amministrazione.email_confirmed
+    if amministrazione #&& amministrazione.email_confirmed
       session[:role]='amministrazione'
       session[:amministrazione_id]=amministrazione.id
       redirect_to menuamministrazione_url, :notice => "#{amministrazione.email} login avvenuto con successo"

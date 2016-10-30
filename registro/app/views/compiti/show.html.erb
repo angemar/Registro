@@ -10,5 +10,21 @@
   <%= @compito.oggetto %>
 </p>
 
+<p>
+  <strong>Sezione:</strong>
+  <%= Sezione.find(@compito.sezione_id).to_label %>
+</p>
+
+<p>
+  <strong>Materia:</strong>
+  <%= Materia.find(@compito.materia_id).nome %>
+</p>
+
+<p>
+  <strong>Docente:</strong>
+  <%= Docenza.find(@compito.docenza_id).cognome %>
+  <%= Docenza.find(@compito.docenza_id).nome %>
+</p>
+
 <%= link_to 'Edit', edit_compito_path(@compito) %> |
 <%= link_to 'Back', compiti_path %>

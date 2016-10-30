@@ -3,7 +3,7 @@
 <h3><%= link_to 'Visualizza attività extrascolastiche', attivitaextras_path %></h3>
 <h3><%= link_to 'Visualizza docenti', docenze_path %></h3>
 <h3><%= link_to 'Visualizza circolari', circolari_path %></h3>
-<h3><%= link_to 'Visualizza assenze', assenze_path %></h3>
+<h3><%= link_to 'Visualizza assenze', assenzealunno_path(current_user.id) %></h3>
 <h3><%= link_to 'Visualizza profilo', alunno_path(current_user.id) %></h3>
 
 

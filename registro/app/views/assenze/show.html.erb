@@ -1,8 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Data:</strong>
   <%= @assenza.date %>
+</p>
+
+<p>
+  <strong>Cognome:</strong>
+  <%= Alunno.find(@assenza.alunno_id).cognome %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= Alunno.find(@assenza.alunno_id).nome %>
+</p>
+
+<p>
+  <strong>Cf:</strong>
+  <%= Alunno.find(@assenza.alunno_id).cf %>
+</p>
+
+<p>
+  <strong>Sezione:</strong>
+  <%= Sezione.find(Alunno.find(@assenza.alunno_id).sezione_id).to_label %>
+</p>
+
+<p>
+  <strong>Inserito da:</strong>
+  <%= Amministrazione.find(@assenza.amministrazione_id).cognome %>
+  <%= Amministrazione.find(@assenza.amministrazione_id).nome %>
 </p>
 
 <%= link_to 'Edit', edit_assenza_path(@assenza) %> |

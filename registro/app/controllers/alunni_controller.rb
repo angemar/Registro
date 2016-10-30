@@ -70,6 +70,12 @@ class AlunniController < ApplicationController
   def update
     @sezioni = Sezione.all
     respond_to do |format|
+      @alunno.user=session[:role]
+      if session[:role] != "alunno"
+		    alunno_params.delete(:email)
+		    alunno_params.delete(:password)
+		    alunno_params.delete(:password_confirmation)
+      end
       if @alunno.update(alunno_params)
         format.html { redirect_to @alunno, notice: 'Alunno was successfully updated.' }
         format.json { render :show, status: :ok, location: @alunno }

@@ -1,6 +1,7 @@
 class Alunno < ActiveRecord::Base
 
    attr_accessor :password
+   attr_accessor :user
    before_save :encrypt_password
    before_create :confirmation_token
 
@@ -11,20 +12,28 @@ class Alunno < ActiveRecord::Base
    validates :cittaresidenza, presence: true
    validates :datanascita, presence: true
    validates :cittanascita, presence: true
-   validates :email, presence: true, uniqueness: true, email: true
-   validates :password, presence: true
-   validates :password_confirmation, presence: true
-   validates_confirmation_of :password
+   validates :email, presence: true, uniqueness: true, email: true, :on => :create
+   validates :password, presence: true, :on => :create
+   validates :password_confirmation, presence: true, :on => :create
+   validates_confirmation_of :password, :on => :create
+   
+   validates :email, presence: true, uniqueness: true, email: true, :on => :update, :if => :is_alunno
+   validates :password, presence: true, :on => :update, :if => :is_alunno
+   validates :password_confirmation, presence: true, :on => :update, :if => :is_alunno
+   validates_confirmation_of :password, :on => :update, :if => :is_alunno
+
+
 
    belongs_to :sezione
    has_many :alunno_attivitaextra
    has_and_belongs_to_many :attivitaextras, :join_table => "alunno_attivitaextra"
    has_many :voti
-   has_many :alunno_compito
-   has_many :compiti, :through => :alunno_compito
    has_many :assenze
-   has_many :notedisciplinari
+   has_many :notedisciplinari  
 
+   def is_alunno
+     user=="alunno"
+   end
 
    def encrypt_password
      if password.present?
@@ -46,6 +55,11 @@ class Alunno < ActiveRecord::Base
     self.email_confirmed = true
     self.confirm_token = nil
     save!(:validate => false)
+  end
+
+  
+  def to_label
+    "#{cognome} #{nome} #{cf}"
   end
 
   private

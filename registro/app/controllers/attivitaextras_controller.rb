@@ -69,6 +69,6 @@ class AttivitaextrasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attivitaextra_params
-      params.require(:attivitaextra).permit(:descrizione, :datainizio, :datafine, :luogo, :orainizio, :orafine)
+      params.require(:attivitaextra).permit(:descrizione, :datainizio, :datafine, :luogo, :orainizio, :orafine, :docenza_id)
     end
 end

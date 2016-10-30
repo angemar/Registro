@@ -69,6 +69,6 @@ class AssenzeController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assenza_params
-      params.require(:assenza).permit(:date)
+      params.require(:assenza).permit(:date, :alunno_id, :amministrazione_id)
     end
 end

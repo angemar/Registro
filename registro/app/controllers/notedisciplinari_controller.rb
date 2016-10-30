@@ -69,6 +69,6 @@ class NotedisciplinariController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notadisciplinare_params
-      params.require(:notadisciplinare).permit(:data, :oggetto)
+      params.require(:notadisciplinare).permit(:data, :oggetto, :sezione_id, :alunno_id)
     end
 end

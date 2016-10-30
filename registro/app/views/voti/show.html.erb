@@ -6,6 +6,27 @@
 </p>
 
 <p>
+  <strong>Sezione:</strong>
+  <%= Sezione.find(Alunno.find(@voto.alunno_id).sezione_id).to_label %>
+</p>
+
+<p>
+  <strong>Alunno:</strong>
+    <%= Alunno.find(@voto.alunno_id).to_label %>
+</p>
+
+<p>
+  <strong>Materia:</strong>
+  <%= Materia.find(@voto.materia_id).nome %>
+</p>
+
+<p>
+  <strong>Docente:</strong>
+  <%= Docenza.find(@voto.docenza_id).cognome %>
+  <%= Docenza.find(@voto.docenza_id).nome %>
+</p>
+
+<p>
   <strong>Valore:</strong>
   <%= @voto.valore %>
 </p>

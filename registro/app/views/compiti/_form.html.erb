@@ -19,6 +19,17 @@
     <%= f.label :oggetto %><br>
     <%= f.text_area :oggetto %>
   </div>
+  <div class="field">
+    <%= f.label :sezione_id %><br>
+    <%= f.select :sezione_id, Sezione.where(id: DocenzaSezioneMateria.where(docenza_id = current_user.id).select("sezione_id")).order("numero, lettera").collect { |p| [ "%d %s" % [p.numero, p.lettera] , p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.label :materia_id %><br>
+    <%= f.select :materia_id, Materia.order("nome").collect { |p| [ "%s" % [p.nome] , p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :docenza_id, :value => current_user.id %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

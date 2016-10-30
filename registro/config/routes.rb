@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "logoutalunno" => "sessionealunno#destroy"
   get "menualunno" => "alunni#menu"
   get "elenco" => 'alunni#elenco'
+  get "assenzealunno" => "assenze/:alunno_id", to: "assenze#index"
 
   #Docenza
   get "logindocenza" => "sessionedocenza#new"

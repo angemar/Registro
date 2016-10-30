@@ -35,6 +35,10 @@
     <%= f.label :orafine %><br>
     <%= f.time_select :orafine %>
   </div>
+  <div class="field">
+    <%= f.label :docenza_id %><br>
+    <%= f.hidden_field :orafine, :value => current_user.id %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

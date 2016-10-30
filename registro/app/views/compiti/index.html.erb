@@ -7,6 +7,9 @@
     <tr>
       <th>Data</th>
       <th>Oggetto</th>
+      <th>Sezione</th>
+      <th>Materia</th>
+      <th colspan="2">Docente</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +19,10 @@
       <tr>
         <td><%= compito.data %></td>
         <td><%= compito.oggetto %></td>
+	<td><%= Sezione.find(compito.sezione_id).to_label %></td>
+        <td><%= Materia.find(compito.materia_id).nome %></td>
+        <td><%= Docenza.find(compito.docenza_id).cognome %></td>
+        <td><%= Docenza.find(compito.docenza_id).nome %></td>
         <td><%= link_to 'Show', compito %></td>
         <td><%= link_to 'Edit', edit_compito_path(compito) %></td>
         <td><%= link_to 'Destroy', compito, method: :delete, data: { confirm: 'Are you sure?' } %></td>

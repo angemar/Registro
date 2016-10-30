@@ -58,6 +58,12 @@ class DocenzeController < ApplicationController
   # PATCH/PUT /docenze/1.json
   def update
     respond_to do |format|
+      @docenza.user=session[:role]
+      if session[:role] != "docenza"
+		    docenza_params.delete(:email)
+		    docenza_params.delete(:password)
+		    docenza_params.delete(:password_confirmation)
+      end
       if @docenza.update(docenza_params)
         format.html { redirect_to @docenza, notice: 'Docenza was successfully updated.' }
         format.json { render :show, status: :ok, location: @docenza }

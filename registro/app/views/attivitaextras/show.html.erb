@@ -30,5 +30,11 @@
   <%= @attivitaextra.orafine %>
 </p>
 
+<p>
+  <strong>Organizzatore:</strong>
+  <%= Docenza.find(@attivitaextra.docenza_id).cognome %>
+  <%= Docenza.find(@attivitaextra.docenza_id).nome %>
+</p>
+
 <%= link_to 'Edit', edit_attivitaextra_path(@attivitaextra) %> |
 <%= link_to 'Back', attivitaextras_path %>

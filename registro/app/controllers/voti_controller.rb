@@ -1,5 +1,6 @@
 class VotiController < ApplicationController
   before_action :set_voto, only: [:show, :edit, :update, :destroy]
+  before_filter :classe_assegnata, only: [:new]
 
   # GET /voti
   # GET /voti.json
@@ -61,6 +62,12 @@ class VotiController < ApplicationController
     end
   end
 
+  def classe_assegnata
+    if DocenzaSezioneMateria.exists?(docenza_id: current_user.id) == false
+      redirect_to menudocenza_url, notice: 'Lei non ha nessuna classe assegnata!' 
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_voto
@@ -69,6 +76,6 @@ class VotiController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def voto_params
-      params.require(:voto).permit(:data, :valore)
+      params.require(:voto).permit(:data, :valore, :materia_id, :docenza_id, :alunno_id)
     end
 end
