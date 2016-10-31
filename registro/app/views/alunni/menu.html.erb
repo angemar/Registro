@@ -1,9 +1,13 @@
-<h1>Menu alunno</h1>
+<h1>Menu alunno<%if current_user.sezione_id == nil %>(sezione non ancora assegnata)<%end%></h1>
+<%if current_user.sezione_id != nil %>
 <h3><%= link_to 'Visualizza compiti in classe', compiti_path %></h3>
-<h3><%= link_to 'Visualizza attività extrascolastiche', attivitaextras_path %></h3>
+<h3><%= link_to 'Visualizza attività extrascolastiche', attivitaextras_path(sezione_id: Alunno.find(current_user.id).sezione_id) %></h3>
+<%end%>
 <h3><%= link_to 'Visualizza docenti', docenze_path %></h3>
 <h3><%= link_to 'Visualizza circolari', circolari_path %></h3>
-<h3><%= link_to 'Visualizza assenze', assenzealunno_path(current_user.id) %></h3>
+<%if current_user.sezione_id != nil %>
+<h3><%= link_to 'Visualizza assenze', assenzealunno_path(alunno_id: current_user.id) %></h3>
+<%end%>
 <h3><%= link_to 'Visualizza profilo', alunno_path(current_user.id) %></h3>
 
 

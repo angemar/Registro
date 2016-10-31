@@ -4,7 +4,11 @@ class AssenzeController < ApplicationController
   # GET /assenze
   # GET /assenze.json
   def index
-    @assenze = Assenza.all
+    if params[:alunno_id]
+      @assenze = Assenza.where(alunno_id: params[:alunno_id])
+    else
+      @assenze = Assenza.all
+    end
   end
 
   # GET /assenze/1

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alunno_id: 1
+  attivitaextra_id: 1
+  partecipazione: false
+
+two:
+  alunno_id: 1
+  attivitaextra_id: 1
+  partecipazione: false

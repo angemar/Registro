@@ -36,8 +36,11 @@
     <%= f.time_select :orafine %>
   </div>
   <div class="field">
-    <%= f.label :docenza_id %><br>
-    <%= f.hidden_field :orafine, :value => current_user.id %>
+    <%= f.label :sezione_id %><br>
+    <%= f.select :sezione_id, Sezione.all.collect { |p| [p.to_label , p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :docenza_id, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit %>

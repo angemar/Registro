@@ -24,7 +24,11 @@ class AlunniController < ApplicationController
   # GET /alunni
   # GET /alunni.json
   def index
-    @alunni = Alunno.all
+    if params[:attivitaextra_id]
+      @alunni = Alunno.where(id: AlunnoAttivitaextra.where(attivitaextra_id = params[:attivitaextra_id]).select("alunno_id"))
+    else
+      @alunni = Alunno.all
+    end
   end
 
   # GET /alunni/1

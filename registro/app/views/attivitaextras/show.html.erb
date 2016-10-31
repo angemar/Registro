@@ -31,10 +31,25 @@
 </p>
 
 <p>
+  <strong>Sezione:</strong>
+  <%= Sezione.find(@attivitaextra.sezione_id).to_label %>
+</p>
+
+<p>
   <strong>Organizzatore:</strong>
   <%= Docenza.find(@attivitaextra.docenza_id).cognome %>
   <%= Docenza.find(@attivitaextra.docenza_id).nome %>
 </p>
+
+<% if session[:role] == "alunno" && userlogged_in? %>
+<p>
+  <%if AlunnoAttivitaextra.where(alunno_id = current_user.id && attivitaextra_id = @attivitaextra.id).exists? == false %>
+    <%= button_to 'Partecipa', new_alunno_attivitaextra_path(@attivitaextra) %>
+  <%else%>
+    <%= button_to 'Non partecipare', AlunnoAttivitaextra.where(alunno_id = current_user.id && attivitaextra_id = @attivitaextra.id).take, method: :delete, data: { confirm: 'Annulla partecipazione?' } %>
+  <%end%>
+</p> 
+<%end%>
 
 <%= link_to 'Edit', edit_attivitaextra_path(@attivitaextra) %> |
 <%= link_to 'Back', attivitaextras_path %>

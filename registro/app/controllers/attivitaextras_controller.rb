@@ -4,7 +4,11 @@ class AttivitaextrasController < ApplicationController
   # GET /attivitaextras
   # GET /attivitaextras.json
   def index
-    @attivitaextras = Attivitaextra.all
+    if params[:sezione_id]
+      @attivitaextras = Attivitaextra.where(sezione_id: params[:sezione_id])
+    else
+      @attivitaextras = Attivitaextra.all
+    end
   end
 
   # GET /attivitaextras/1
@@ -69,6 +73,6 @@ class AttivitaextrasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attivitaextra_params
-      params.require(:attivitaextra).permit(:descrizione, :datainizio, :datafine, :luogo, :orainizio, :orafine, :docenza_id)
+      params.require(:attivitaextra).permit(:descrizione, :datainizio, :datafine, :luogo, :orainizio, :orafine, :docenza_id, :sezione_id)
     end
 end

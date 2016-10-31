@@ -25,7 +25,6 @@ class Alunno < ActiveRecord::Base
 
 
    belongs_to :sezione
-   has_many :alunno_attivitaextra
    has_and_belongs_to_many :attivitaextras, :join_table => "alunno_attivitaextra"
    has_many :voti
    has_many :assenze

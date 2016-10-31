@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027140111) do
+ActiveRecord::Schema.define(version: 20161030214943) do
 
   create_table "alunno", force: :cascade do |t|
     t.string   "cf"
@@ -34,22 +34,15 @@ ActiveRecord::Schema.define(version: 20161027140111) do
 
   add_index "alunno", ["sezione_id"], name: "index_alunno_on_sezione_id"
 
-  create_table "alunno_attivitaextra", id: false, force: :cascade do |t|
-    t.integer "alunno_id"
-    t.integer "attivitaextra_id"
+  create_table "alunno_attivitaextra", force: :cascade do |t|
+    t.integer  "alunno_id"
+    t.integer  "attivitaextra_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "alunno_attivitaextra", ["alunno_id"], name: "index_alunno_attivitaextra_on_alunno_id"
   add_index "alunno_attivitaextra", ["attivitaextra_id"], name: "index_alunno_attivitaextra_on_attivitaextra_id"
-
-  create_table "alunno_compito", id: false, force: :cascade do |t|
-    t.integer "voto"
-    t.integer "alunno_id"
-    t.integer "compito_id"
-  end
-
-  add_index "alunno_compito", ["alunno_id"], name: "index_alunno_compito_on_alunno_id"
-  add_index "alunno_compito", ["compito_id"], name: "index_alunno_compito_on_compito_id"
 
   create_table "amministrazione", force: :cascade do |t|
     t.string   "cf"
@@ -90,7 +83,12 @@ ActiveRecord::Schema.define(version: 20161027140111) do
     t.time     "orafine"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "docenza_id"
+    t.integer  "sezione_id"
   end
+
+  add_index "attivitaextra", ["docenza_id"], name: "index_attivitaextra_on_docenza_id"
+  add_index "attivitaextra", ["sezione_id"], name: "index_attivitaextra_on_sezione_id"
 
   create_table "circolare", force: :cascade do |t|
     t.integer  "numero"
@@ -137,14 +135,6 @@ ActiveRecord::Schema.define(version: 20161027140111) do
     t.string   "confirm_token"
   end
 
-  create_table "docenza_attivitaextra", id: false, force: :cascade do |t|
-    t.integer "docenza_id"
-    t.integer "attivitaextra_id"
-  end
-
-  add_index "docenza_attivitaextra", ["attivitaextra_id"], name: "index_docenza_attivitaextra_on_attivitaextra_id"
-  add_index "docenza_attivitaextra", ["docenza_id"], name: "index_docenza_attivitaextra_on_docenza_id"
-
   create_table "docenza_sezione_materia", force: :cascade do |t|
     t.integer  "sezione_id"
     t.integer  "docenza_id"
@@ -169,8 +159,10 @@ ActiveRecord::Schema.define(version: 20161027140111) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "docenza_id"
+    t.integer  "alunno_id"
   end
 
+  add_index "notadisciplinare", ["alunno_id"], name: "index_notadisciplinare_on_alunno_id"
   add_index "notadisciplinare", ["docenza_id"], name: "index_notadisciplinare_on_docenza_id"
 
   create_table "sezione", force: :cascade do |t|
@@ -187,13 +179,11 @@ ActiveRecord::Schema.define(version: 20161027140111) do
     t.datetime "updated_at", null: false
     t.integer  "docenza_id"
     t.integer  "materia_id"
-    t.integer  "sezione_id"
     t.integer  "alunno_id"
   end
 
   add_index "voto", ["alunno_id"], name: "index_voto_on_alunno_id"
   add_index "voto", ["docenza_id"], name: "index_voto_on_docenza_id"
   add_index "voto", ["materia_id"], name: "index_voto_on_materia_id"
-  add_index "voto", ["sezione_id"], name: "index_voto_on_sezione_id"
 
 end

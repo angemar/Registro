@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
   get "docenti_materie" => 'sezioni#docenti_materie'
   get "nuovoinsegnamento" => "docenza_sezione_materie#nuovoinsegnamento"
+  post "/alunno_attivitaextras/new"
+
+  resources :alunno_attivitaextras
 
   resources :voti
 

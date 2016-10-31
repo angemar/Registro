@@ -11,6 +11,7 @@
       <th>Luogo</th>
       <th>Orainizio</th>
       <th>Orafine</th>
+      <th>Sezione</th>
       <th colspan="2">Organizzatore</th>
       <th>Partecipanti</th>
       <th colspan="3"></th>
@@ -26,9 +27,10 @@
         <td><%= attivitaextra.luogo %></td>
         <td><%= attivitaextra.orainizio %></td>
         <td><%= attivitaextra.orafine %></td>
+        <td><%= Sezione.find(attivitaextra.sezione_id).to_label %></td>
         <td><%= Docenza.find(attivitaextra.docenza_id).cognome %></td>
         <td><%= Docenza.find(attivitaextra.docenza_id).nome %></td>
-        <td><%= link_to 'Visualizza partecipanti', alunni_path %></td>
+        <td><%= link_to 'Visualizza partecipanti', alunni_path(:attivitaextra_id => attivitaextra) %></td>
         <td><%= link_to 'Show', attivitaextra %></td>
         <td><%= link_to 'Edit', edit_attivitaextra_path(attivitaextra) %></td>
         <td><%= link_to 'Destroy', attivitaextra, method: :delete, data: { confirm: 'Are you sure?' } %></td>

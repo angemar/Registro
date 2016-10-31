@@ -5,6 +5,8 @@ class AddReference < ActiveRecord::Migration
 
     add_column :attivitaextra, :docenza_id, :integer
     add_index "attivitaextra", ["docenza_id"], name: "index_attivitaextra_on_docenza_id"
+    add_column :attivitaextra, :sezione_id, :integer
+    add_index "attivitaextra", ["sezione_id"], name: "index_attivitaextra_on_sezione_id"
 
     add_column :assenza, :alunno_id, :integer
     add_column :assenza, :amministrazione_id, :integer

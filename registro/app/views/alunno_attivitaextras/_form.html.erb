@@ -1,0 +1,23 @@
+<%= form_for(@alunno_attivitaextra) do |f| %>
+  <% if @alunno_attivitaextra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alunno_attivitaextra.errors.count, "error") %> prohibited this alunno_attivitaextra from being saved:</h2>
+
+      <ul>
+      <% @alunno_attivitaextra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :alunno_id, :value => current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :attivitaextra_id, :value => @attivitaextra %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Conferma partecipazione" %>
+  </div>
+<% end %>
