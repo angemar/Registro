@@ -1,5 +1,13 @@
 class AssenzeController < ApplicationController
   before_action :set_assenza, only: [:show, :edit, :update, :destroy]
+  before_filter :is_permitted, only: [:new, :create, :edit, :update, :destroy]
+
+  def is_permitted
+    if session[:role] != "amministrazione"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
+
 
   # GET /assenze
   # GET /assenze.json

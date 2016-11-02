@@ -1,10 +1,28 @@
 class NotedisciplinariController < ApplicationController
   before_action :set_notadisciplinare, only: [:show, :edit, :update, :destroy]
+  before_filter :is_permitted, only: [:new, :edit, :update, :destroy]
+  before_filter :is_owner, only: [:edit, :update, :destroy]
+
+  def is_owner
+    if session[:role] == "docenza" && self.docenza_id != current_user.id
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
+
+  def is_permitted
+    if session[:role] != "docenza"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
 
   # GET /notedisciplinari
   # GET /notedisciplinari.json
   def index
-    @notedisciplinari = Notadisciplinare.all
+    if params[:alunno_id]
+      @notedisciplinari = Notadisciplinare.where(alunno_id: params[:alunno_id])
+    else
+      @notedisciplinari = Notadisciplinare.all
+    end
   end
 
   # GET /notedisciplinari/1

@@ -1,5 +1,12 @@
 class MaterieController < ApplicationController
   before_action :set_materia, only: [:show, :edit, :update, :destroy]
+  before_filter :is_permitted, only: [:new, :edit, :update, :destroy]
+
+  def is_permitted
+    if session[:role] != "amministrazione"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
 
   # GET /materie
   # GET /materie.json

@@ -1,11 +1,29 @@
 class VotiController < ApplicationController
   before_action :set_voto, only: [:show, :edit, :update, :destroy]
   before_filter :classe_assegnata, only: [:new]
+  before_filter :is_permitted, only: [:new, :edit, :update, :destroy]
+  before_filter :is_owner, only: [:edit, :update, :destroy]
+
+  def is_owner
+    if session[:role] == "docenza" && self.docenza_id != current_user.id
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
+
+  def is_permitted
+    if session[:role] == "alunno"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
 
   # GET /voti
   # GET /voti.json
   def index
-    @voti = Voto.all
+    if params[:alunno_id]
+      @voti = Voto.where(alunno_id: params[:alunno_id])
+    else
+      @voti = Voto.all
+    end
   end
 
   # GET /voti/1

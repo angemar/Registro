@@ -7,7 +7,6 @@
     <tr>
       <th colspan="2">Docente</th>
       <th>Materia</th>
-      <th>Sez</th>
     </tr>
   </thead>
 
@@ -17,7 +16,6 @@
         <td><%= Docenza.find(docenza_sezione_materia.docenza_id).cognome %></td>
         <td><%= Docenza.find(docenza_sezione_materia.docenza_id).nome %></td>
         <td><%= Materia.find(docenza_sezione_materia.materia_id).nome %></td>
-	<td><%= docenza_sezione_materia.sezione_id %></td>
         <td><%= link_to 'Destroy', docenza_sezione_materia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

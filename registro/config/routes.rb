@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "menualunno" => "alunni#menu"
   get "elenco" => 'alunni#elenco'
   get "assenzealunno" => "assenze/:alunno_id", to: "assenze#index"
+  get "notedisciplinarialunno" => "notedisciplinari/:alunno_id", to: "notedisciplinari#index"
+  get "votialunno" => "voti/:alunno_id", to: "voti#index"
 
   #Docenza
   get "logindocenza" => "sessionedocenza#new"

@@ -5,9 +5,6 @@
 <%end%>
 <h3><%= link_to 'Visualizza docenti', docenze_path %></h3>
 <h3><%= link_to 'Visualizza circolari', circolari_path %></h3>
-<%if current_user.sezione_id != nil %>
-<h3><%= link_to 'Visualizza assenze', assenzealunno_path(alunno_id: current_user.id) %></h3>
-<%end%>
 <h3><%= link_to 'Visualizza profilo', alunno_path(current_user.id) %></h3>
 
 

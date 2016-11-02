@@ -1,5 +1,12 @@
 class DocenzaSezioneMaterieController < ApplicationController
   before_action :set_docenza_sezione_materia, only: [:show, :edit, :update, :destroy]
+  before_filter :is_permitted, only: [:nuovoinsegnamento, :destroy]
+
+  def is_permitted
+    if session[:role] != "amministrazione"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
 
   def nuovoinsegnamento
     @docenza_sezione_materia = DocenzaSezioneMateria.new

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :sezione_id %><br>
-    <%= f.select :sezione_id, Sezione.where(id: DocenzaSezioneMateria.where(docenza_id = current_user.id).select("sezione_id")).order("numero, lettera").collect { |p| [ "%d %s" % [p.numero, p.lettera] , p.id ] }, include_blank: false %>
+    <%= f.select :sezione_id, Sezione.where(id: DocenzaSezioneMateria.where(docenza_id: current_user.id).select("sezione_id")).order("numero, lettera").collect { |p| [ "%d %s" % [p.numero, p.lettera] , p.id ] }, include_blank: false %>
   </div>
   <div class="field">
     <%= f.label :materia_id %><br>

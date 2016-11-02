@@ -1,5 +1,12 @@
 class AlunniController < ApplicationController
   before_action :set_alunno, only: [:show, :edit, :update, :destroy]
+  before_filter :is_permitted, only: [:edit, :update, :destroy]
+
+  def is_permitted
+    if session[:role] == "docenza"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
 
   def confirm_email
     alunno = Alunno.find_by_confirm_token(params[:id])

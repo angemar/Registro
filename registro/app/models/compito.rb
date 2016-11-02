@@ -6,4 +6,5 @@ class Compito < ActiveRecord::Base
    belongs_to :docenza
    belongs_to :materia
    belongs_to :sezione
+
 end

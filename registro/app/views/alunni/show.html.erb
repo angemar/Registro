@@ -55,6 +55,11 @@
   <%= @alunno.password %>
 </p>
 
+<%if session[:role]!="alunno" || current_user.sezione_id != nil %>
+<%= link_to 'Visualizza assenze', assenzealunno_path(alunno_id: @alunno.id) %>
+<%end%>
+<%= button_to 'Note Disciplinari', notedisciplinarialunno_path(alunno_id: @alunno.id) %>
+<%= button_to 'Voti', votialunno_path(alunno_id: @alunno.id) %>
 
 <% if session[:role] != 'docenza' && userlogged_in? %>
   <%= link_to 'Edit', edit_alunno_path(@alunno) %>

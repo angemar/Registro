@@ -1,5 +1,19 @@
 class AttivitaextrasController < ApplicationController
   before_action :set_attivitaextra, only: [:show, :edit, :update, :destroy]
+  before_filter :is_permitted, only: [:new, :edit, :update, :destroy]
+  before_filter :is_owner, only: [:edit, :update, :destroy]
+
+  def is_owner
+    if session[:role] == "docenza" && self.docenza_id != current_user.id
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
+
+  def is_permitted
+    if session[:role] != "docenza"
+      redirect_to :back, :alert => "Operazione non permessa"
+    end
+  end
 
   # GET /attivitaextras
   # GET /attivitaextras.json
