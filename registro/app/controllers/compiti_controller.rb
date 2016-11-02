@@ -2,11 +2,16 @@ class CompitiController < ApplicationController
   before_action :set_compito, only: [:show, :edit, :update, :destroy]
   before_filter :classe_assegnata, only: [:new]
   before_filter :is_permitted, only: [:new, :edit, :update, :destroy]
-  #before_filter :is_owner, only: [:edit, :update, :destroy] 
-  #before_filter :only => [:edit, :update, :destroy] do |c| c.is_owner self.docenza_id end
+  before_filter :is_owner, only: [:edit, :update, :destroy] 
+  before_filter :capt_param, only: [:is_owner]
 
-  def is_owner(doc)
-    if session[:role] == "docenza" && doc != current_user.id
+  def capt_param
+    @compito ||= Compito.find(params[:id])
+  end
+  helper_method :capt_param
+
+  def is_owner
+    if session[:role] == "docenza" && capt_param.docenza_id != current_user.id
       redirect_to compiti_path, :alert => "Operazione non permessa"
     end
   end

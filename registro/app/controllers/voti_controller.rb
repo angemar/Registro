@@ -2,13 +2,19 @@ class VotiController < ApplicationController
   before_action :set_voto, only: [:show, :edit, :update, :destroy]
   before_filter :classe_assegnata, only: [:new]
   before_filter :is_permitted, only: [:new, :edit, :update, :destroy]
-  before_filter :is_owner, only: [:edit, :update, :destroy]
+  before_filter :is_owner, only: [:edit, :update, :destroy] 
+  before_filter :capt_param, only: [:is_owner]
+
+  def capt_param
+    @voto ||= Voto.find(params[:id])
+  end
+  helper_method :capt_param
 
   def is_owner
-    if session[:role] == "docenza" && self.docenza_id != current_user.id
-      redirect_to :back, :alert => "Operazione non permessa"
+    if session[:role] == "docenza" && capt_param.docenza_id != current_user.id
+      redirect_to compiti_path, :alert => "Operazione non permessa"
     end
-  end
+  end  
 
   def is_permitted
     if session[:role] == "alunno"
