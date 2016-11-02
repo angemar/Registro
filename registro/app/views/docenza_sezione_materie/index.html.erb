@@ -5,21 +5,19 @@
 <table>
   <thead>
     <tr>
-      <th>Docenza</th>
-      <th>Sezione</th>
+      <th colspan="2">Docente</th>
       <th>Materia</th>
-      <th colspan="3"></th>
+      <th>Sez</th>
     </tr>
   </thead>
 
   <tbody>
     <% @docenza_sezione_materie.each do |docenza_sezione_materia| %>
       <tr>
-        <td><%= docenza_sezione_materia.docenza_id %></td>
-        <td><%= docenza_sezione_materia.sezione_id %></td>
-        <td><%= docenza_sezione_materia.materia_id %></td>
-        <td><%= link_to 'Show', docenza_sezione_materia %></td>
-        <td><%= link_to 'Edit', edit_docenza_sezione_materia_path(docenza_sezione_materia) %></td>
+        <td><%= Docenza.find(docenza_sezione_materia.docenza_id).cognome %></td>
+        <td><%= Docenza.find(docenza_sezione_materia.docenza_id).nome %></td>
+        <td><%= Materia.find(docenza_sezione_materia.materia_id).nome %></td>
+	<td><%= docenza_sezione_materia.sezione_id %></td>
         <td><%= link_to 'Destroy', docenza_sezione_materia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Docenza sezione materia', new_docenza_sezione_materia_path %>
+<%= link_to 'Aggiungi insegnamento', nuovoinsegnamento_path(:sezione_id => @id_sez) %>

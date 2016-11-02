@@ -17,14 +17,21 @@
         <td><%= sezione.lettera %></td>
         <td><%= sezione.numero %></td>
         <td><%= link_to 'Show', sezione %></td>
+	<% if session[:role] == 'amministrazione' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_sezione_path(sezione) %></td>
         <td><%= link_to 'Destroy', sezione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <br>
+
 <%= link_to 'Visualizza alunni non assegnati', elenco_path(:sezione_id => nil) %>
+
 <br><br>
 
 <%= link_to 'New Sezione', new_sezione_path %>
+<% end %>

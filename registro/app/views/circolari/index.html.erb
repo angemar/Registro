@@ -21,8 +21,10 @@
         <td><%= circolare.titolo %></td>
         <td><%= circolare.oggetto %></td>
         <td><%= link_to 'Show', circolare %></td>
+        <% if session[:role] == 'amministrazione' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_circolare_path(circolare) %></td>
         <td><%= link_to 'Destroy', circolare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,6 @@
 
 <br>
 
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'New Circolare', new_circolare_path %>
+<% end %>

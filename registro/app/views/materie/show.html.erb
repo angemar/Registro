@@ -5,5 +5,7 @@
   <%= @materia.nome %>
 </p>
 
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'Edit', edit_materia_path(@materia) %> |
+<% end %>
 <%= link_to 'Back', materie_path %>

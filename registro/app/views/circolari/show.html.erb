@@ -20,5 +20,7 @@
   <%= @circolare.oggetto %>
 </p>
 
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'Edit', edit_circolare_path(@circolare) %> |
+<%end%>
 <%= link_to 'Back', circolari_path %>

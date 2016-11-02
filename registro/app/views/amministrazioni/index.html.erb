@@ -31,13 +31,11 @@
         <td><%= amministrazione.email %></td>
         <td><%= amministrazione.titolo %></td>
         <td><%= link_to 'Show', amministrazione %></td>
+        <% if session[:role] == 'amministrazione' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_amministrazione_path(amministrazione) %></td>
         <td><%= link_to 'Destroy', amministrazione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Amministrazione', new_amministrazione_path %>

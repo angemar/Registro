@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<h1>Sezione <%= @sezione.numero %><%= @sezione.lettera %></h1>
   <div class="field">
     <%= f.label :materia_id %><br>
     <%= f.select :materia_id, Materia.all.collect { |p| [ "%s" % [p.nome] , p.id ] }, include_blank: false %>

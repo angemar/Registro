@@ -10,7 +10,9 @@
   <%= @sezione.numero %>
 </p>
 
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'Edit', edit_sezione_path(@sezione) %> |
+<%end%>
 <%= link_to 'Back', sezioni_path %>
 
 <p>
@@ -21,6 +23,6 @@
 <% if session[:role]=='amministrazione' && userlogged_in? %>
 	<p>
 		<strong>Assegnazione docenti e materie:</strong>
-		<%= link_to 'Assegna docenti e materie per la sezione', docenti_materie_path(:sezione_id => @sezione.id) %>
+		<%= link_to 'Assegna docenti e materie per la sezione', doc_sez_mat_path(sezione_id: @sezione.id) %>
 	</p>
 <% end %>

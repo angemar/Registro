@@ -51,9 +51,9 @@
 </p>
 
 
-<% if userlogged_in? %>
-  <%= link_to 'Edit', edit_docenza_path(@docenza) %> |
-  <%= link_to 'Logout', logoutdocenza_path %>
+<% if session[:role] != 'alunno' && userlogged_in? %>
+  <%= link_to 'Edit', edit_docenza_path(@docenza) %>
+  <%= link_to 'Destroy', @docenza, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% else %>
   <%= link_to 'Login', logindocenza_path %>
 <% end %>

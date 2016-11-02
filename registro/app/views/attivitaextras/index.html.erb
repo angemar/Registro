@@ -32,8 +32,10 @@
         <td><%= Docenza.find(attivitaextra.docenza_id).nome %></td>
         <td><%= link_to 'Visualizza partecipanti', alunni_path(:attivitaextra_id => attivitaextra) %></td>
         <td><%= link_to 'Show', attivitaextra %></td>
+        <% if session[:role] == 'docenza' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_attivitaextra_path(attivitaextra) %></td>
         <td><%= link_to 'Destroy', attivitaextra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -41,4 +43,6 @@
 
 <br>
 
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'New Attivitaextra', new_attivitaextra_path %>
+<%end%>

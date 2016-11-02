@@ -24,8 +24,10 @@
         <td><%= Docenza.find(compito.docenza_id).cognome %></td>
         <td><%= Docenza.find(compito.docenza_id).nome %></td>
         <td><%= link_to 'Show', compito %></td>
+	<% if session[:role] == 'docenza' && userlogged_in? %>	
         <td><%= link_to 'Edit', edit_compito_path(compito) %></td>
         <td><%= link_to 'Destroy', compito, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%end%>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +35,6 @@
 
 <br>
 
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'New Compito', new_compito_path %>
+<%end%>

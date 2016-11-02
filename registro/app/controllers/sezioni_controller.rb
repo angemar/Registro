@@ -1,15 +1,6 @@
 class SezioniController < ApplicationController
   before_action :set_sezione, only: [:show, :edit, :update, :destroy]
 
-  def docenti_materie
-    id_sez=params[:sezione_id]
-    if id_sez != nil
-      @sezione = Sezione.find(id_sez)
-      @docenti = Docenza.where(id: @sezione.docenze)
-      @materie = Materia.where(id: @sezione.materie)
-    end
-  end
-
   # GET /sezioni
   # GET /sezioni.json
   def index

@@ -12,7 +12,9 @@ class DocenzaSezioneMaterieController < ApplicationController
   # GET /docenza_sezione_materie
   # GET /docenza_sezione_materie.json
   def index
-    @docenza_sezione_materie = DocenzaSezioneMateria.all
+    @id_sez=params[:sezione_id]
+    @docenza_sezione_materie = DocenzaSezioneMateria.where(sezione_id: params[:sezione_id])
+
   end
 
   # GET /docenza_sezione_materie/1

@@ -29,13 +29,13 @@
         <td><%= alunno.datanascita %></td>
         <td><%= alunno.email %></td>
         <td><%= link_to 'Show', alunno %></td>
+        <% if session[:role] != 'docenza' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_alunno_path(alunno) %></td>
+        <% end %>
+        <% if session[:role] == 'amministrazione' && userlogged_in? %>
         <td><%= link_to 'Destroy', alunno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Alunno', new_alunno_path %>

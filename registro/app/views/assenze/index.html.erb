@@ -23,11 +23,17 @@
         <td><%= Alunno.find(assenza.alunno_id).nome %></td>
         <td><%= Alunno.find(assenza.alunno_id).cf %></td>
         <td><%= Sezione.find(Alunno.find(assenza.alunno_id).sezione_id).to_label %></td>
+        <%if Amministrazione.exists?(assenza.amministrazione_id) %>
         <td><%= Amministrazione.find(assenza.amministrazione_id).cognome %></td>
         <td><%= Amministrazione.find(assenza.amministrazione_id).nome %></td>
+        <%else%>
+        <td colspan = "2">Utente non più in archivio</td>
+	<%end%>
         <td><%= link_to 'Show', assenza %></td>
+        <% if session[:role] == 'amministrazione' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_assenza_path(assenza) %></td>
         <td><%= link_to 'Destroy', assenza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +41,6 @@
 
 <br>
 
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'New Assenza', new_assenza_path %>
+<%end%>

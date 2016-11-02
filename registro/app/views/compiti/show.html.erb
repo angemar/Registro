@@ -26,5 +26,7 @@
   <%= Docenza.find(@compito.docenza_id).nome %>
 </p>
 
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'Edit', edit_compito_path(@compito) %> |
+<%end%>
 <%= link_to 'Back', compiti_path %>

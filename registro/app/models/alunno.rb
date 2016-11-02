@@ -26,9 +26,9 @@ class Alunno < ActiveRecord::Base
 
    belongs_to :sezione
    has_and_belongs_to_many :attivitaextras, :join_table => "alunno_attivitaextra"
-   has_many :voti
-   has_many :assenze
-   has_many :notedisciplinari  
+   has_many :voti, dependent: :destroy
+   has_many :assenze, dependent: :destroy
+   has_many :notedisciplinari, dependent: :destroy
 
    def is_alunno
      user=="alunno"

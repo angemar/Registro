@@ -31,13 +31,13 @@
         <td><a href="<%= docenza.curriculum %>">Link al curriculum</a></td>
         <td><%= docenza.email %></td>
         <td><%= link_to 'Show', docenza %></td>
+        <% if session[:role] != 'alunno' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_docenza_path(docenza) %></td>
+        <%end%>
+        <% if session[:role] == 'amministrazione' && userlogged_in? %>
         <td><%= link_to 'Destroy', docenza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Docenza', new_docenza_path %>

@@ -7,7 +7,9 @@
 
 <p>
   <strong>Sezione:</strong>
+  <%if Sezione.exists?(Alunno.find(@voto.alunno_id).sezione_id) %>
   <%= Sezione.find(Alunno.find(@voto.alunno_id).sezione_id).to_label %>
+  <%end%>
 </p>
 
 <p>
@@ -22,8 +24,12 @@
 
 <p>
   <strong>Docente:</strong>
+  <% if Docenza.exists?(@voto.docenza_id) %>
   <%= Docenza.find(@voto.docenza_id).cognome %>
   <%= Docenza.find(@voto.docenza_id).nome %>
+  <%else%>
+  Utente non più in archivio
+  <%end%>
 </p>
 
 <p>
@@ -31,5 +37,7 @@
   <%= @voto.valore %>
 </p>
 
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'Edit', edit_voto_path(@voto) %> |
+<%end%>
 <%= link_to 'Back', voti_path %>

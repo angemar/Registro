@@ -51,9 +51,9 @@
 </p>
 
 
-<% if userlogged_in? %>
-  <%= link_to 'Edit', edit_amministrazione_path(@amministrazione) %> |
-  <%= link_to 'Logout', logoutamministrazione_path %>
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
+  <%= link_to 'Edit', edit_amministrazione_path(@amministrazione) %>
+  <%= link_to 'Destroy', @amministrazione, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% else %>
   <%= link_to 'Login', loginamministrazione_path %>
 <% end %>

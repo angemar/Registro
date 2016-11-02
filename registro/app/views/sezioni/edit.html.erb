@@ -1,7 +1,7 @@
 <h1>Editing Sezione</h1>
 
 <%= render 'form' %>
-<%= link_to 'Modifica elenco alunni', elenco_path(@sezione) %>
+<%= link_to 'Modifica elenco alunni', elenco_path(:sezione_id => @sezione.id) %>
 
 <br><br>
 <%= link_to 'Show', @sezione %> |

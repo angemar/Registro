@@ -27,9 +27,15 @@
 
 <p>
   <strong>Inserito da:</strong>
+  <% if Amministrazione.exists?(@assenza.amministrazione_id) %>
   <%= Amministrazione.find(@assenza.amministrazione_id).cognome %>
   <%= Amministrazione.find(@assenza.amministrazione_id).nome %>
+  <%else%>
+  Utente non più in archivio
+  <%end%>
 </p>
 
+<% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'Edit', edit_assenza_path(@assenza) %> |
+<%end%>
 <%= link_to 'Back', assenze_path %>

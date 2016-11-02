@@ -17,9 +17,15 @@
 
 <p>
   <strong>Docente:</strong>
+  <% if Docenza.exists?(@notadisciplinare.docenza_id) %>
   <%= Docenza.find(@notadisciplinare.docenza_id).cognome %>
   <%= Docenza.find(@notadisciplinare.docenza_id).nome %>
+  <%else%>
+  Utente non più in archivio
+  <%end%>
 </p>
 
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'Edit', edit_notadisciplinare_path(@notadisciplinare) %> |
+<%end%>
 <%= link_to 'Back', notedisciplinari_path %>

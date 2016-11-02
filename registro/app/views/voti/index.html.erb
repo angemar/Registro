@@ -19,19 +19,31 @@
     <% @voti.each do |voto| %>
       <tr>
         <td><%= voto.data %></td>
+	<td><%= Alunno.find(voto.alunno_id).to_label %></td>
+        <%if Sezione.exists?(Alunno.find(voto.alunno_id).sezione_id) %>
         <td><%= Sezione.find(Alunno.find(voto.alunno_id).sezione_id).to_label %></td>
+        <% else %>
+        <td></td>
+	<% end %>
         <td><%= Materia.find(voto.materia_id).nome %></td>
+	<% if Docenza.exists?(voto.docenza_id) %>
 	<td><%= Docenza.find(voto.docenza_id).cognome %></td>
         <td><%= Docenza.find(voto.docenza_id).nome %></td>
+	<%else%>
+	<td colspan="2">Utente non più in archivio</td>
+	<%end%>
         <td><%= voto.valore %></td>
         <td><%= link_to 'Show', voto %></td>
+	<% if session[:role] == 'docenza' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_voto_path(voto) %></td>
         <td><%= link_to 'Destroy', voto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'New Voto', new_voto_path %>
+<%end%>

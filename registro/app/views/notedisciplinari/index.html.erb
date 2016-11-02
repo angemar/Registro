@@ -19,16 +19,23 @@
         <td><%= notadisciplinare.data %></td>
         <td><%= notadisciplinare.oggetto %></td>
 	<td><%= Alunno.find(notadisciplinare.alunno_id).to_label %></td>
+        <% if Docenza.exists?(notadisciplinare.docenza_id) %>
 	<td><%= Docenza.find(notadisciplinare.docenza_id).cognome %></td>
         <td><%= Docenza.find(notadisciplinare.docenza_id).nome %></td>
+        <%else%>
+	<td colspan="2">Utente non più in archivio</td>
+	<%end%>
         <td><%= link_to 'Show', notadisciplinare %></td>
+        <% if session[:role] == 'docenza' && userlogged_in? %>
         <td><%= link_to 'Edit', edit_notadisciplinare_path(notadisciplinare) %></td>
         <td><%= link_to 'Destroy', notadisciplinare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'New Notadisciplinare', new_notadisciplinare_path %>
+<% end %>

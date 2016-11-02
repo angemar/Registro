@@ -51,5 +51,7 @@
 </p> 
 <%end%>
 
+<% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'Edit', edit_attivitaextra_path(@attivitaextra) %> |
+<% end %>
 <%= link_to 'Back', attivitaextras_path %>

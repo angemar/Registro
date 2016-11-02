@@ -23,12 +23,13 @@ class Docenza < ActiveRecord::Base
    validates_confirmation_of :password, :on => :update, :if => :is_docenza
 
 
-   has_many :attivitaextras
+   has_many :attivitaextras, dependent: :destroy
    has_many :notedisciplinari
-   has_many :compiti
+   has_many :compiti, dependent: :destroy
    has_many :voti
    has_and_belongs_to_many :sezioni, :join_table => "docenza_sezione_materia"
    has_and_belongs_to_many :materie, :join_table => "docenza_sezione_materia"
+   has_many :docenza_sezione_materia, dependent: :destroy
 
    def is_docenza
      user=="docenza"
