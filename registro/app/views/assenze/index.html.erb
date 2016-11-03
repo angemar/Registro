@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
+<script>
+	$(function() {
+		$('a#show_stat').click(function(event){
+			event.preventDefault();
+			$('div#stat').toggle();
+		});
+	}); 
+</script>
 
 <h1>Listing Assenze</h1>
 
@@ -40,7 +48,14 @@
 </table>
 
 <br>
-
 <% if session[:role] == 'amministrazione' && userlogged_in? %>
 <%= link_to 'New Assenza', new_assenza_path %>
 <%end%>
+
+<br> <br> <br>
+<a href="" id="show_stat">Visualizza statistiche</a>
+<br> <br>
+<div id="stat" class="hidden">
+<%= column_chart @assenze.group("strftime('%Y',date)").group("strftime('%m',date)").count, xtitle: "Mese", ytitle: "Numero", width: "800px", height: "500px" %>
+</div>
+

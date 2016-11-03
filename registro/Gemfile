@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "chartkick"
 gem 'net-ssh'
 gem 'listen',                   '3.0.8'
 gem 'rails',                   '4.2.0'
