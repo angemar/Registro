@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Listing Voti</h1>
 
 <table>
@@ -47,3 +46,10 @@
 <% if session[:role] == 'docenza' && userlogged_in? %>
 <%= link_to 'New Voto', new_voto_path %>
 <%end%>
+
+<br> <br> <br>
+<% if params["alunno_id"] != nil %>
+<br> <br> <br>
+<%= voti_stat %>
+<%end%>
+

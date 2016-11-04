@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get "doc_sez_mat" => "docenza_sezione_materie/:sezione_id", to: 'docenza_sezione_materie#index'
   get "nuovoinsegnamento" => "docenza_sezione_materie#nuovoinsegnamento"
   post "/alunno_attivitaextras/new"
+	
 
   resources :alunno_attivitaextras
 
