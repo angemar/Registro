@@ -7,5 +7,5 @@ class Attivitaextra < ActiveRecord::Base
    belongs_to :docenza
    belongs_to :sezione
    has_and_belongs_to_many :alunni, :join_table => "alunno_attivitaextra"
-   has_many :alunno_attivitaextra, , dependent: :destroy
+   has_many :alunno_attivitaextra, dependent: :destroy
 end

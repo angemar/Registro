@@ -11,7 +11,7 @@ class NotedisciplinariController < ApplicationController
 
   def is_owner
     if session[:role] == "docenza" && capt_param.docenza_id != current_user.id
-      redirect_to compiti_path, :alert => "Operazione non permessa"
+      redirect_to notedisciplinari_path, :alert => "Operazione non permessa"
     end
   end  
 
@@ -93,6 +93,6 @@ class NotedisciplinariController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notadisciplinare_params
-      params.require(:notadisciplinare).permit(:data, :oggetto, :sezione_id, :alunno_id)
+      params.require(:notadisciplinare).permit(:data, :oggetto, :docenza_id, :alunno_id)
     end
 end

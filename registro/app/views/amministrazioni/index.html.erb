@@ -1,41 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Amministratori</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Amministrazioni</h1>
+<body style="background:#FFA726;">
+    <div class="col-md-12" style="text-align:center;">
+        <h1> Elenco Amministratori</h1></div>
+    <div class="col-md-12">
+        <div class="table-responsive", align="center">
+			<table class="table", style="border-collapse:collapse;">
 
-<table>
-  <thead>
-    <tr>
-      <th>Cf</th>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Indirizzo</th>
-      <th>Cittaresidenza</th>
-      <th>Cittanascita</th>
-      <th>Datanascita</th>
-      <th>Email</th>
-      <th>Titolo</th>
-      <th colspan="3"></th>
+              <thead>
+				    <tr>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>CF</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Nome</span>
+	  </th>
+		<th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Cognome</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Indirizzo</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Indirizzo</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Città di residenza</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Città di nascita</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Data di nascita</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Email</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Titolo</span>
+					  </th>
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Mostra</span>
+					  </th>
+	  <% if session[:role] == 'amministrazione' && userlogged_in? %>  
+		<th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Modifica</span>
+					  </th>
+		<th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Elimina</span>
+	</th>
+	 <%end%>
     </tr>
   </thead>
 
   <tbody>
     <% @amministrazioni.each do |amministrazione| %>
       <tr>
-        <td><%= amministrazione.cf %></td>
-        <td><%= amministrazione.nome %></td>
-        <td><%= amministrazione.cognome %></td>
-        <td><%= amministrazione.indirizzo %></td>
-        <td><%= amministrazione.cittaresidenza %></td>
-        <td><%= amministrazione.cittanascita %></td>
-        <td><%= amministrazione.datanascita %></td>
-        <td><%= amministrazione.email %></td>
-        <td><%= amministrazione.titolo %></td>
-        <td><%= link_to 'Show', amministrazione %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.cf %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.nome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.cognome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.indirizzo %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.cittaresidenza %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.cittanascita %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.datanascita %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.email %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= amministrazione.titolo %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Show', amministrazione %></td>
         <% if session[:role] == 'amministrazione' && userlogged_in? %>
-        <td><%= link_to 'Edit', edit_amministrazione_path(amministrazione) %></td>
-        <td><%= link_to 'Destroy', amministrazione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Edit', edit_amministrazione_path(amministrazione) %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Destroy', amministrazione, method: :delete, data: { confirm: 'Sei Sicuro?' } %></td>
         <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+

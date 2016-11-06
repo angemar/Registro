@@ -1,4 +1,17 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostra Sezione</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background:#FFA726;">
+    <div class="col-md-12", align="center">
+        <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Lettera:</strong>
@@ -17,12 +30,17 @@
 
 <p>
   <strong>Elenco alunni:</strong>
-  <%= link_to 'Visualizza elenco alunni', elenco_path(:sezione_id => @sezione.id) %>
+  <%= link_to 'Visualizza elenco alunni', elenco_path(:sezione_id => @sezione.id) , :style=>"color:black" %>
 </p>
 
 <% if session[:role]=='amministrazione' && userlogged_in? %>
 	<p>
 		<strong>Assegnazione docenti e materie:</strong>
-		<%= link_to 'Assegna docenti e materie per la sezione', doc_sez_mat_path(sezione_id: @sezione.id) %>
+		<%= link_to 'Assegna docenti e materie per la sezione', doc_sez_mat_path(sezione_id: @sezione.id), :style=>"color:trasparent" %>
 	</p>
 <% end %>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

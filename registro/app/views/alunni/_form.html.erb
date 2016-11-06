@@ -12,10 +12,10 @@
   <% end %>
 
 <% if session[:role] == 'alunno' || session[:role]==nil %>
-  <h1>Dati registrazione</h1>
+  <h2>Inserire dati per la registrazione:</h2>
 
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :"email" %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
@@ -23,15 +23,15 @@
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
+    <%= f.label :"conferma Password" %><br>
     <%= f.password_field :password_confirmation %>
   </div>
 <% end %>
 
-  <h1>Dati profilo</h1>
+    <h2>Inserire dati personali:</h2>
 
   <div class="field">
-    <%= f.label :cf %><br>
+    <%= f.label :"c"%><%= f.label :"f"%><br>
     <%= f.text_field :cf %>
   </div>
   <div class="field">
@@ -47,16 +47,16 @@
     <%= f.text_field :indirizzo %>
   </div>
   <div class="field">
-    <%= f.label :cittaresidenza %><br>
+    <%= f.label :"città di residenza" %><br>
     <%= f.text_field :cittaresidenza %>
   </div>
   <div class="field">
-    <%= f.label :cittanascita %><br>
+    <%= f.label :"città di nascita" %><br>
     <%= f.text_field :cittanascita %>
   </div>
   <div class="field">
-    <%= f.label :datanascita %><br>
-    <%= f.date_select :datanascita %>
+    <%= f.label :"data di nascita" %><br>
+    <%= f.date_select :datanascita , order: [:day, :month, :year], :use_month_names => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Gugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre','Dicembre'], start_year: Date.today.year, end_year: Date.today.year - 100 %>
   </div>
 
 <% if session[:role]=='amministrazione' && userlogged_in? %>
@@ -68,6 +68,8 @@
 
   <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Invio", :class => 'button', :style=>'background:#FFE0B2'%>
   </div>
 <% end %>
+
+ 

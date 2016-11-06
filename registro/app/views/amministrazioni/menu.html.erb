@@ -1,10 +1,52 @@
-<h1>Menu amministrazione</h1>
-<h3><%= link_to 'Elenco sezioni', sezioni_path %></h3>
-<h3><%= link_to 'Assenze', assenze_path %></h3>
-<h3><%= link_to 'Visualizza docenti', docenze_path %></h3>
-<h3><%= link_to 'Visualizza circolari', circolari_path %></h3>
-<h3><%= link_to "Corsi d'insegnamento", materie_path %></h3>
-<h3><%= link_to 'Visualizza profilo', amministrazione_path(current_user.id) %></h3>
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menuAl</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background:#FFA726;">
+    <div class="col-md-12">
+        <h1> </h1>
+    </div>
+    <div class="col-md-12">
+        <h1 style="text-align:center;">Menu </h1>
+        <h1> </h1>
+    </div>
+    <div class="col-md-12" style="text-align:center;">
+		<%= link_to "<button class='btn btn-default btn-lg', style='background:#FFE0B2;font-size:x-large;height:30px;width:400px;'>Elenco sezioni</button>".html_safe, sezioni_path, :style=>"color:black" %>
+        <h3> </h3>
+    </div>
+    <div class="col-md-12" style="text-align:center;">		
+        <%= link_to "<button class='btn btn-default btn-lg', style='background:#FFE0B2;font-size:x-large;height:30px;width:400px;'>Assenze</button>".html_safe, assenze_path, :style=>"color:black" %>
+        <h3> </h3>
+    </div>
+    <div class="col-md-12" style="text-align:center;">
+         <%= link_to "<button class='btn btn-default btn-lg', style='background:#FFE0B2;font-size:x-large;height:30px;width:400px;'>Visualizza docenti</button>".html_safe, docenze_path, :style=>"color:black" %>
+        <h3> </h3>
+    </div>
+    <div class="col-md-12" style="text-align:center;">
+		<%= link_to "<button class='btn btn-default btn-lg', style='background:#FFE0B2;font-size:x-large;height:30px;width:400px;'>Visualizza circolari</button>".html_safe, circolari_path, :style=>"color:black" %>
+		<h3> </h3>
+    </div>
+
+	<div class="col-md-12" style="text-align:center;">
+		<%= link_to "<button class='btn btn-default btn-lg', style='background:#FFE0B2;font-size:x-large;height:30px;width:400px;'>Corsi d'insegnamento</button>".html_safe, materie_path, :style=>"color:black" %>
+		<h3> </h3>
+    </div>
+
+    <div class="col-md-12" style="text-align:center;">
+		<%= link_to "<button class='btn btn-default btn-lg', style='background:#FFE0B2;font-size:x-large;height:30px;width:400px;'>Visualizza profilo</button>".html_safe, amministrazione_path(current_user.id), :style=>"color:black" %>
+        <h1> </h1>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
 
 

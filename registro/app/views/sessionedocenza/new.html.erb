@@ -1,14 +1,47 @@
-<h1>Login</h1>
+<!DOCTYPE html>
+<html>
 
-<%= form_tag ("sessionedocenza/create") do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Login" %></p>
-  <%= link_to 'Registrati', new_docenza_path %>
-<% end %>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background:#FFA726;">
+    <div class="login-clean" style="background:#FFA726;">
+		<div class="container" style="text-align:center;padding-left:40%">
+        <%= form_tag ("sessionedocenza/create"),:method=>"post",:style=>"background:#FFB74D;text-align:center;width:200px; heigth:400px;" do %>
+		   <h2 class="sr-only">Docente</h2>
+           <h2 class="sr-only">Login Form</h2>
+           <%= image_tag("simbolo.jpg", :width=>"132") %>          
+            <div class="illustration"></div>
+            <div class="form-group">
+				<%= label_tag :email %><br />
+				<%= text_field_tag :email, params[:email], :class=>"form-control", :placeholder=>"Email"%>
+               
+            </div>
+            <h4> </h4>
+            <div class="form-group">
+                <%= label_tag :password %><br />
+				<%= password_field_tag :password, nil, :placeholder=>"Password", :class=>"form-control"%>
+            </div>
+            <h4> </h4>
+            <div class="form-group">
+                <p class="button"><%= submit_tag "Login", :style=>"background:#FFE0B2;color:black;"%></p>
+            </div>
+            <h4>oppure </h4>            
+            <h4> </h4>  
+            <%= link_to "<button style='background:#FFCC80;'>Registrati</button>".html_safe, new_docenza_path %>
+            <h4>  </h4>
+            <% end %>                  
+
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

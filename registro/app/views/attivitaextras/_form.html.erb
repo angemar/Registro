@@ -16,33 +16,33 @@
     <%= f.text_area :descrizione %>
   </div>
   <div class="field">
-    <%= f.label :datainizio %><br>
-    <%= f.date_select :datainizio %>
+    <%= f.label :"data inizio" %><br>
+    <%= f.date_select :datainizio , order: [:day, :month, :year], :use_month_names => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Gugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre','Dicembre'], start_year: Date.today.year, end_year: Date.today.year - 10 %>
   </div>
   <div class="field">
-    <%= f.label :datafine %><br>
-    <%= f.date_select :datafine %>
+    <%= f.label :"data fine" %><br>
+    <%= f.date_select :datafine , order: [:day, :month, :year], :use_month_names => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Gugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre','Dicembre'], start_year: Date.today.year, end_year: Date.today.year - 10 %>
   </div>
   <div class="field">
     <%= f.label :luogo %><br>
     <%= f.text_field :luogo %>
   </div>
   <div class="field">
-    <%= f.label :orainizio %><br>
+    <%= f.label :"ora inizio" %><br>
     <%= f.time_select :orainizio %>
   </div>
   <div class="field">
-    <%= f.label :orafine %><br>
+    <%= f.label :"ora fine" %><br>
     <%= f.time_select :orafine %>
   </div>
   <div class="field">
-    <%= f.label :sezione_id %><br>
+    <%= f.label :sezione %><br>
     <%= f.select :sezione_id, Sezione.all.collect { |p| [p.to_label , p.id ] }, include_blank: false %>
   </div>
   <div class="field">
     <%= f.hidden_field :docenza_id, :value => current_user.id %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+    <%= f.submit "Invio", :class => 'button', :style=>'background:#FFE0B2'%>
   </div>
 <% end %>

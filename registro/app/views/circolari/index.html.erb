@@ -1,37 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Circolari</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Circolari</h1>
+<body style="background:#FFA726;">
+    <div class="col-md-12" style="text-align:center;">
+        <h1> Elenco delle Circolari</h1></div>
+    <div class="col-md-12">
+        <div class="table-responsive", align="center">
+			<table class="table", style="border-collapse:collapse;">
 
-<table>
-  <thead>
+              <thead>
     <tr>
-      <th>Numero</th>
-      <th>Dataemissione</th>
-      <th>Titolo</th>
-      <th>Oggetto</th>
-      <th colspan="3"></th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Numero</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Data di Emissione</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Titolo</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Oggetto</span>
+	  </th>		
+	  
+	  
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Mostra</span>
+	  </th>
+	  <% if session[:role] == 'amministrazione' && userlogged_in? %>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Modifica</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Elimina</span>
+	  </th>
+	  <%end%>	  
     </tr>
   </thead>
 
   <tbody>
     <% @circolari.each do |circolare| %>
       <tr>
-        <td><%= circolare.numero %></td>
-        <td><%= circolare.dataemissione %></td>
-        <td><%= circolare.titolo %></td>
-        <td><%= circolare.oggetto %></td>
-        <td><%= link_to 'Show', circolare %></td>
-        <% if session[:role] == 'amministrazione' && userlogged_in? %>
-        <td><%= link_to 'Edit', edit_circolare_path(circolare) %></td>
-        <td><%= link_to 'Destroy', circolare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= circolare.numero %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= circolare.dataemissione %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= circolare.titolo %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= circolare.oggetto %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Show', circolare , :style=>"color:black;" %></td>
+	<% if session[:role] == 'amministrazione' && userlogged_in? %>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Edit', edit_circolare_path(circolare) , :style=>"color:black;" %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Destroy', circolare, :style=>"color:black;", method: :delete, data: { confirm: 'Sei Sicuro?' } %></td>
+	
+	
+	<%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
 <% if session[:role] == 'amministrazione' && userlogged_in? %>
-<%= link_to 'New Circolare', new_circolare_path %>
+<%= link_to 'Nuova Circolare', new_circolare_path %>
 <% end %>
+
+   	   </tbody>
+</table>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>

@@ -1,3 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docenza sezione materia</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background:#FFA726;", align="center">
 <%= form_for(@docenza_sezione_materia) do |f| %>
   <% if @docenza_sezione_materia.errors.any? %>
     <div id="error_explanation">
@@ -12,19 +25,23 @@
   <% end %>
 <h1>Sezione <%= @sezione.numero %><%= @sezione.lettera %></h1>
   <div class="field">
-    <%= f.label :materia_id %><br>
+    <%= f.label :materia %><br>
     <%= f.select :materia_id, Materia.all.collect { |p| [ "%s" % [p.nome] , p.id ] }, include_blank: false %>
   </div>
   <div class="field">
-    <%= f.label :docenza_id %><br>
+    <%= f.label :docenza%><br>
     <%= f.select :docenza_id, Docenza.all.collect { |p| [ "%s %s" % [p.cognome, p.nome] , p.id ] }, include_blank: false %>
   </div>
   <div class="field">
     <%= f.hidden_field :sezione_id, :value => @sezione.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Invio", :class => 'button', :style=>'background:#FFE0B2'%>
   </div>
 <% end %>
+
+</body>
+</html>
+
 
 

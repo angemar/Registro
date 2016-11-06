@@ -1,7 +1,52 @@
-<h1>Scegli il tuo ruolo</h1>
+<!DOCTYPE html>
+<html>
 
-<br><br>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegistroElettronico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
 
-<%= link_to 'Amministrazione', loginamministrazione_path %><br>
-<%= link_to 'Docenza', logindocenza_path %><br>
-<%= link_to 'Alunno', loginalunno_path %>
+<body style="background-color:#FFA726;">
+    <div class="col-md-12">
+        <h1 class="text-center">Registro Elettronico</h1>
+        <h3 class="text-center"> </h3></div>
+    <div class="col-md-12">
+        <header></header>
+    </div>
+    <div class="col-md-12 col-md-offset-0">
+        <h1 class="text-center">Liceo Scientifico Stanislao Cannizzaro</h1></div>
+    <div class="col-md-6">
+        <h3 class="text-center">Sede Centrale</h3></div>
+    <div class="col-md-6">
+        <h3 class="text-center">Sede Succursale</h3></div>
+    <div class="col-md-6">
+        <h4 class="text-center">Via dell'oceano indiano, 25</h4>
+        <h4 class="text-center">cap 00144, Roma</h4></div>
+    <div class="col-md-6">
+        <h4 class="text-center">Viale della Civiltà, 10,</h4>
+        <h4 class="text-center">cap 00144, Roma</h4></div>
+    <div class="col-md-12">
+        <h2 class="text-left"> </h2>
+        <h3 class="text-left">Per iniziare si scelga un ruolo:</h3></div>
+    <div class="col-md-12 col-md-offset-0" style="text-align:center;">      
+ 	 <%= link_to "<button class='btn btn-default btn-lg', style='background:#FFCC80;padding-left:2.5%;padding-right:2.5%;'>Amministrazione</button>".html_safe, loginamministrazione_path, :style=>"color:black" %>	
+    </div>
+    <div class="col-md-3 col-md-offset-5">
+        <h5> </h5></div>
+    <div class="col-md-12 col-md-offset-0" style="text-align:center;">
+        <%= link_to "<button class='btn btn-default btn-lg', style='background:#FFCC80;padding-left:5%;padding-right:5%;'>Docente</button>".html_safe, logindocenza_path, :style=>"color:black" %>	
+    </div>
+    <div class="col-md-12 col-md-offset-5">
+        <h5> </h5></div>
+    <div class="col-md-12 col-md-offset-0" style="text-align:center;">
+	<%= link_to "<button class='btn btn-default btn-lg', style='background:#FFCC80;padding-left:6%;padding-right:5%;'>Alunno</button>".html_safe, loginalunno_path, :style=>"color:black" %>	
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

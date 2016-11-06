@@ -1,25 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Sezioni</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Sezioni</h1>
+<body style="background:#FFA726;">
+    <div class="col-md-12" style="text-align:center;">
+        <h1> Elenco Sezioni</h1></div>
+    <div class="col-md-12">
+        <div class="table-responsive", align="center">
+			<table class="table", style="border-collapse:collapse;">
 
-<table>
-  <thead>
+              <thead>
     <tr>
-      <th>Lettera</th>
-      <th>Numero</th>
-      <th colspan="3"></th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Lettera</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Numero</span>
+	  </th>		
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Mostra</span>
+	  </th>
+	  <% if session[:role] == 'amministrazione' && userlogged_in? %>
+	  
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Modifica</span>
+	  </th>
+	  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Elimina</span>
+	  </th>	
+	  <%end%>  
     </tr>
   </thead>
 
   <tbody>
     <% @sezioni.each do |sezione| %>
       <tr>
-        <td><%= sezione.lettera %></td>
-        <td><%= sezione.numero %></td>
-        <td><%= link_to 'Show', sezione %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= sezione.lettera %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= sezione.numero %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Show', sezione , :style=>"color:trasparent;" %></td>
 	<% if session[:role] == 'amministrazione' && userlogged_in? %>
-        <td><%= link_to 'Edit', edit_sezione_path(sezione) %></td>
-        <td><%= link_to 'Destroy', sezione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Edit', edit_sezione_path(sezione) , :style=>"color:trasparent;" %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Destroy', sezione , :style=>"color:trasparent;", method: :delete, data: { confirm: 'Sei Sicuro?' } %></td>
 	<%end%>
       </tr>
     <% end %>
@@ -29,9 +58,17 @@
 <% if session[:role] == 'amministrazione' && userlogged_in? %>
 <br>
 
-<%= link_to 'Visualizza alunni non assegnati', elenco_path(:sezione_id => nil) %>
+<%= link_to 'Visualizza alunni non assegnati', elenco_path(:sezione_id => nil) , :style=>"color:trasparent;" %>
 
 <br><br>
 
-<%= link_to 'New Sezione', new_sezione_path %>
+<%= link_to 'Nuova Sezione', new_sezione_path , :style=>"color:trasparent;" %>
 <% end %>
+
+   	   </tbody>
+</table>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>

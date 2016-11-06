@@ -1,36 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Alunni</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Alunni</h1>
+<body style="background:#FFA726;">
+    <div class="col-md-12" style="text-align:center;">
+        <h1> Elenco Alunni</h1></div>
+    <div class="col-md-12">
+        <div class="table-responsive", align="center">
+			<table class="table", style="border-collapse:collapse;">
 
-<table>
-  <thead>
-    <tr>
-      <th>Cf</th>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Indirizzo</th>
-      <th>Cittaresidenza</th>
-      <th>Cittanascita</th>
-      <th>Datanascita</th>
-      <th>Email</th>
-      <th></th>
-    </tr>
-  </thead>
+<thead>
+				    <tr>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>CF</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Nome</span>
+					  </th>
 
-  <tbody>
+					  <th style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Cognome</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Indirizzo</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Città di residenza</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Città di nascita</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Data di nascita</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Email</span>
+					  </th>
+					  <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Mostra</span>
+					  </th>
+					  
+					</tr>
+<tbody>
     <% @alunni.each do |alunno| %>
       <tr>
-        <td><%= alunno.cf %></td>
-        <td><%= alunno.nome %></td>
-        <td><%= alunno.cognome %></td>
-        <td><%= alunno.indirizzo %></td>
-        <td><%= alunno.cittaresidenza %></td>
-        <td><%= alunno.cittanascita %></td>
-        <td><%= alunno.datanascita %></td>
-        <td><%= alunno.email %></td>
-        <td><%= link_to 'Show', alunno %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.cf %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.nome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.cognome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.indirizzo %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.cittaresidenza %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.cittanascita %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.datanascita %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= alunno.email %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Show', alunno , :style=>"color:black;"%></td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
-
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>

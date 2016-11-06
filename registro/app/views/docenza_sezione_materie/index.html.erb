@@ -1,22 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Associazioni</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Docenza Sezione Materie</h1>
+<body style="background:#FFA726;">
+    <div class="col-md-12" style="text-align:center;">
+        <h1> Lista Associazioni Docenti - Classe</h1></div>
+    <div class="col-md-12">
+        <div class="table-responsive", align="center">
+			<table class="table", style="border-collapse:collapse;">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">Docente</th>
-      <th>Materia</th>
+<thead>
+				    <tr>
+      
+      <th  colspan="2", style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Docente</span>
+					  </th>
+      
+      <th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Materia</span>
+					  </th>
+					  
+	<th  style="text-align:center;border:1px solid #ddd;padding:8px;">
+						<span>Elimina </span>
+					  </th>			  
     </tr>
   </thead>
 
   <tbody>
     <% @docenza_sezione_materie.each do |docenza_sezione_materia| %>
       <tr>
-        <td><%= Docenza.find(docenza_sezione_materia.docenza_id).cognome %></td>
-        <td><%= Docenza.find(docenza_sezione_materia.docenza_id).nome %></td>
-        <td><%= Materia.find(docenza_sezione_materia.materia_id).nome %></td>
-        <td><%= link_to 'Destroy', docenza_sezione_materia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= Docenza.find(docenza_sezione_materia.docenza_id).cognome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= Docenza.find(docenza_sezione_materia.docenza_id).nome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= Materia.find(docenza_sezione_materia.materia_id).nome %></td>
+        <td style="text-align:center;border:1px solid #ddd;padding:8px;"><%= link_to 'Destroy', docenza_sezione_materia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,3 +51,10 @@
 <br>
 
 <%= link_to 'Aggiungi insegnamento', nuovoinsegnamento_path(:sezione_id => @id_sez) %>
+
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+

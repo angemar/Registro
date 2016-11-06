@@ -1,7 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#FFA726;">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Cf:</strong>
+  <h1 style="text-align:center;">Dati Registrati </h1>
+  <h2>Dati Personali </h2>
+  <strong>CF:</strong>
   <%= @alunno.cf %>
 </p>
 
@@ -21,17 +26,17 @@
 </p>
 
 <p>
-  <strong>Cittaresidenza:</strong>
+  <strong>Città di residenza:</strong>
   <%= @alunno.cittaresidenza %>
 </p>
 
 <p>
-  <strong>Cittanascita:</strong>
+  <strong>Città di nascita:</strong>
   <%= @alunno.cittanascita %>
 </p>
 
 <p>
-  <strong>Datanascita:</strong>
+  <strong>Data di nascita:</strong>
   <%= @alunno.datanascita %>
 </p>
 
@@ -46,20 +51,34 @@
 </p>
 
 <p>
+  <h2>Dati Registrazione </h2>
   <strong>Email:</strong>
   <%= @alunno.email %>
 </p>
 
 <p>
-  <strong>Password:</strong>
+  <strong>Password: ******</strong>
   <%= @alunno.password %>
 </p>
 
-<%if session[:role]!="alunno" || current_user.sezione_id != nil %>
-<%= link_to 'Visualizza assenze', assenzealunno_path(alunno_id: @alunno.id) %><br>
-<%end%>
-<%= link_to 'Note Disciplinari', notedisciplinarialunno_path(alunno_id: @alunno.id) %><br>
-<%= link_to 'Voti', votialunno_path(alunno_id: @alunno.id) %><br><br>
+
+<div>
+	<%if session[:role]!="alunno" || current_user.sezione_id != nil %>
+		<%= link_to "<button class='btn btn-default', style='background:#FFE0B2;width:150px;'>Visualizza assenze</button>".html_safe, assenzealunno_path(alunno_id: @alunno.id), :style=>"color:black" %>
+		<h3> </h3>
+	<%end%>
+
+</div>
+
+<div>	
+	<%= link_to "<button class='btn btn-default', style='background:#FFE0B2; width:150px;'>Note Disciplinari</button>".html_safe, notedisciplinarialunno_path(alunno_id: @alunno.id), :style=>"color:black" %>
+	<h3> </h3>
+</div>
+
+<div>
+	<%= link_to "<button class='btn btn-default', style='background:#FFE0B2;width:150px;'>Voti</button>".html_safe, votialunno_path(alunno_id: @alunno.id), :style=>"color:black" %>
+	<h3> </h3>
+</div>
 
 <% if session[:role] != 'docenza' && userlogged_in? %>
   <%= link_to 'Edit', edit_alunno_path(@alunno) %>

@@ -1,5 +1,28 @@
-<h1>New Compito</h1>
+<!DOCTYPE html>
+<html>
 
-<%= render 'form' %>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuovo Compito</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 
-<%= link_to 'Back', compiti_path %>
+<body style="background:#FFA726;">
+    <div class="col-md-12">
+        <h1 style="text-align:center;">Inserimento Nuovo Compito in classe</h1></div>
+    <div class="col-md-12", align="center">
+		<%= render 'form' %>
+    </div>
+		
+    <div class="col-md-12" , align="center">
+		
+    
+	<%= link_to 'Back', compiti_path, :style=>"color:trasparent"  %>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+</body>
+
+</html>

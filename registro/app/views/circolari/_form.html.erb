@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :numero %><br>
+    <%= f.label :Numero %><br>
     <%= f.number_field :numero %>
   </div>
   <div class="field">
-    <%= f.label :dataemissione %><br>
-    <%= f.date_select :dataemissione %>
+    <%= f.label :"data di emissione" %><br>
+    <%= f.date_select :dataemissione , order: [:day, :month, :year], :use_month_names => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Gugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre','Dicembre'], start_year: Date.today.year, end_year: Date.today.year - 100 %>
   </div>
   <div class="field">
-    <%= f.label :titolo %><br>
+    <%= f.label :Titolo %><br>
     <%= f.text_field :titolo %>
   </div>
   <div class="field">
-    <%= f.label :oggetto %><br>
+    <%= f.label :Oggetto %><br>
     <%= f.text_area :oggetto %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Invio", :class => 'button', :style=>'background:#FFE0B2'%>
   </div>
 <% end %>

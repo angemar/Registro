@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+        <%= f.date_select :date , order: [:day, :month, :year], :use_month_names => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Gugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre','Dicembre'], start_year: Date.today.year, end_year: Date.today.year - 10 %>
+
   </div>
 
   <div class="field">
@@ -25,6 +26,6 @@
     <%= f.hidden_field :amministrazione_id, :value => current_user.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Invio", :class => 'button', :style=>'background:#FFE0B2'%>
   </div>
 <% end %>

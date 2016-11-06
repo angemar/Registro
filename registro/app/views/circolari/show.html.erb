@@ -1,6 +1,18 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
 
-<p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostra Circolare</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background:#FFA726;">
+    <div class="col-md-12", align="center">
+        
+        <p>
   <strong>Numero:</strong>
   <%= @circolare.numero %>
 </p>
@@ -19,8 +31,15 @@
   <strong>Oggetto:</strong>
   <%= @circolare.oggetto %>
 </p>
-
 <% if session[:role] == 'amministrazione' && userlogged_in? %>
-<%= link_to 'Edit', edit_circolare_path(@circolare) %> |
+<%= link_to 'Edit', edit_circolare_path(@circolare), :style=>"color:black" %> |
 <%end%>
-<%= link_to 'Back', circolari_path %>
+<%= link_to 'Back', circolari_path, :style=>"color:black" %>
+     
+    </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

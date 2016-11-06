@@ -1,7 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#FFA726;">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Cf:</strong>
+  <h1 style="text-align:center;">Dati Registrati </h1>
+  <h2>Dati Personali </h2>
+  <strong>CF:</strong>
   <%= @amministrazione.cf %>
 </p>
 
@@ -21,27 +26,28 @@
 </p>
 
 <p>
-  <strong>Cittaresidenza:</strong>
+  <strong>Città di residenza:</strong>
   <%= @amministrazione.cittaresidenza %>
 </p>
 
 <p>
-  <strong>Cittanascita:</strong>
+  <strong>Città di nascita:</strong>
   <%= @amministrazione.cittanascita %>
 </p>
 
 <p>
-  <strong>Datanascita:</strong>
+  <strong>Data di nascita:</strong>
   <%= @amministrazione.datanascita %>
 </p>
 
 <p>
+  <h2>Dati Registrazione </h2>
   <strong>Email:</strong>
   <%= @amministrazione.email %>
 </p>
 
 <p>
-  <strong>Password:</strong>
+  <strong>Password: *********</strong>
   <%= @amministrazione.password %>
 </p>
 

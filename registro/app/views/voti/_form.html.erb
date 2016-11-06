@@ -13,24 +13,25 @@
 
   <div class="field">
     <%= f.label :data %><br>
-    <%= f.date_select :data %>
+    <%= f.date_select :data , order: [:day, :month, :year], :use_month_names => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Gugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre','Dicembre'], start_year: Date.today.year, end_year: Date.today.year - 10 %>
+
   </div>
   <div class="field">
-    <%= f.label :valore %><br>
+    <%= f.label :"voto" %><br>
     <%= f.number_field :valore %>
   </div>
   <div class="field">
-    <%= f.label :alunno_id %><br>
+    <%= f.label :alunno %><br>
     <%= f.grouped_collection_select :alunno_id, Sezione.where(id: DocenzaSezioneMateria.where(docenza_id = current_user.id).select("sezione_id")).order("numero, lettera"), :alunni, :to_label, :id, :to_label, include_blank: false %>
   </div>
   <div class="field">
-    <%= f.label :materia_id %><br>
+    <%= f.label :materia %><br>
     <%= f.select :materia_id, Materia.order("nome").collect { |p| [ "%s" % [p.nome] , p.id ] }, include_blank: false %>
   </div>
   <div class="field">
     <%= f.hidden_field :docenza_id, :value => current_user.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Invio", :class => 'button', :style=>'background:#FFE0B2'%>
   </div>
 <% end %>

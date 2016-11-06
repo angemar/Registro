@@ -1,8 +1,29 @@
-<h1>Editing Sezione</h1>
+<!DOCTYPE html>
+<html>
 
-<%= render 'form' %>
-<%= link_to 'Modifica elenco alunni', elenco_path(:sezione_id => @sezione.id) %>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Sezione</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 
-<br><br>
-<%= link_to 'Show', @sezione %> |
-<%= link_to 'Back', sezioni_path %>
+<body style="background:#FFA726;">
+    <div class="col-md-12">
+        <h1 style="text-align:center;">Modifica Sezione</h1></div>
+    <div class="col-md-12", align="center">
+		<%= render 'form' %>
+    </div>
+		
+    <div class="col-md-12" , align="center">
+		<%= link_to 'Modifica elenco alunni', elenco_path(:sezione_id => @sezione.id) %> |
+    
+    <%= link_to 'Show', @sezione, :style=>"color:trasparent" %> |
+	<%= link_to 'Back', sezioni_path, :style=>"color:trasparent"  %>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+</body>
+
+</html>
