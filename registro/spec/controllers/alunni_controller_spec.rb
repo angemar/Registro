@@ -72,7 +72,7 @@ describe AlunniController do
 		  @alunno = FactoryGirl.create(:alunno)
 		end
 		
-		it "deletes the contact" do
+		it "deletes the alunno" do
 		  expect{
 		    delete :destroy, id: @alunno        
 		  }.to change(Alunno,:count).by(-1)
